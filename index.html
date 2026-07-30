@@ -1,0 +1,396 @@
+<title>Gastos de la casa</title>
+<style>
+  :root {
+    --bg: #f7f1e7;
+    --page: #f2ead9;
+    --card: #fffaf2;
+    --card-raised: #ffffff;
+    --ink-panel: #221a10;
+    --text: #2e2419;
+    --text-secondary: #6b5c4a;
+    --muted: #97876f;
+    --border: #e8dcc6;
+    --border-strong: #ddccae;
+    --accent: #b1552c;
+    --accent-hover: #96431f;
+    --accent-ink: #fffaf2;
+    --ok: #0c7a2e;
+    --ok-bg: #e7f3e5;
+    --warn-bg: #fbf0da;
+    --warn-border: #dba238;
+    --warn-ink: #6b4a12;
+    --tu: #eb6834; --tu-track: #f6d9c6;
+    --neysa: #2a78d6; --neysa-track: #cfe0f5;
+    --shadow: 0 1px 2px rgba(46, 36, 25, 0.05), 0 8px 24px rgba(46, 36, 25, 0.07);
+    --shadow-lg: 0 4px 10px rgba(46,36,25,0.08), 0 20px 48px rgba(46,36,25,0.14);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1d1712; --page: #17120e; --card: #261e17; --card-raised: #2c231a; --ink-panel: #0f0b07;
+      --text: #f3e9db; --text-secondary: #cbb99f; --muted: #937e63;
+      --border: #3a2f23; --border-strong: #4a3c2c;
+      --accent: #e08a56; --accent-hover: #eda06f; --accent-ink: #201408;
+      --ok: #4fbf72; --ok-bg: #1c2a1c;
+      --warn-bg: #2e2410; --warn-border: #8a6320; --warn-ink: #f0cf8e;
+      --tu: #d97b3f; --tu-track: #4a3423; --neysa: #5b9bdd; --neysa-track: #24374a;
+      --shadow: 0 1px 2px rgba(0,0,0,0.25), 0 10px 28px rgba(0,0,0,0.35);
+      --shadow-lg: 0 6px 16px rgba(0,0,0,0.3), 0 24px 56px rgba(0,0,0,0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1d1712; --page: #17120e; --card: #261e17; --card-raised: #2c231a; --ink-panel: #0f0b07;
+    --text: #f3e9db; --text-secondary: #cbb99f; --muted: #937e63;
+    --border: #3a2f23; --border-strong: #4a3c2c;
+    --accent: #e08a56; --accent-hover: #eda06f; --accent-ink: #201408;
+    --ok: #4fbf72; --ok-bg: #1c2a1c;
+    --warn-bg: #2e2410; --warn-border: #8a6320; --warn-ink: #f0cf8e;
+    --tu: #d97b3f; --tu-track: #4a3423; --neysa: #5b9bdd; --neysa-track: #24374a;
+    --shadow: 0 1px 2px rgba(0,0,0,0.25), 0 10px 28px rgba(0,0,0,0.35);
+    --shadow-lg: 0 6px 16px rgba(0,0,0,0.3), 0 24px 56px rgba(0,0,0,0.45);
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f1e7; --page: #f2ead9; --card: #fffaf2; --card-raised: #ffffff; --ink-panel: #221a10;
+    --text: #2e2419; --text-secondary: #6b5c4a; --muted: #97876f;
+    --border: #e8dcc6; --border-strong: #ddccae;
+    --accent: #b1552c; --accent-hover: #96431f; --accent-ink: #fffaf2;
+    --ok: #0c7a2e; --ok-bg: #e7f3e5;
+    --warn-bg: #fbf0da; --warn-border: #dba238; --warn-ink: #6b4a12;
+    --tu: #eb6834; --tu-track: #f6d9c6; --neysa: #2a78d6; --neysa-track: #cfe0f5;
+    --shadow: 0 1px 2px rgba(46, 36, 25, 0.05), 0 8px 24px rgba(46, 36, 25, 0.07);
+    --shadow-lg: 0 4px 10px rgba(46,36,25,0.08), 0 20px 48px rgba(46,36,25,0.14);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page); color: var(--text); font-family: var(--sans);
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  .draft-banner {
+    background: var(--warn-bg); border-bottom: 1px solid var(--warn-border); color: var(--warn-ink);
+    font-size: 13px; font-weight: 600; text-align: center; padding: 9px 16px;
+  }
+  section { padding: 0 24px; }
+  .inner { max-width: 980px; margin: 0 auto; }
+  .narrow { max-width: 640px; margin: 0 auto; }
+
+  /* Hero */
+  .hero {
+    padding: 72px 24px 56px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center;
+  }
+  .eyebrow {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 4.4vw, 50px);
+    line-height: 1.08; margin: 14px 0 18px; color: var(--text); text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: 17.5px; color: var(--text-secondary); max-width: 46ch; margin: 0 0 30px;
+  }
+  .hero-cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans);
+    font-weight: 700; font-size: 15.5px; padding: 14px 26px; border-radius: 12px;
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: background 0.15s ease, transform 0.05s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .price-note { font-size: 13px; color: var(--muted); }
+  .price-note .ph { color: var(--warn-ink); font-weight: 700; background: var(--warn-bg); padding: 1px 6px; border-radius: 5px; }
+
+  /* Hero mock dashboard */
+  .hero-mock {
+    background: var(--ink-panel); border-radius: 20px; padding: 20px; box-shadow: var(--shadow-lg);
+  }
+  .hm-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .hm-title { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--text); }
+  .hm-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .hm-name { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--text); }
+  .hm-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .hm-amount { font-size: 13.5px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+  .hm-bar-track { height: 8px; border-radius: 5px; background: var(--border); overflow: hidden; display: flex; }
+  .hm-bar-tu { background: var(--tu); height: 100%; }
+  .hm-bar-neysa { background: var(--neysa); height: 100%; }
+  .hm-pct-row { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); font-weight: 600; }
+  .hm-divider { height: 1px; background: var(--border); margin: 2px 0; }
+  .hm-balance { display: flex; align-items: baseline; justify-content: space-between; }
+  .hm-balance .label { font-size: 12.5px; color: var(--text-secondary); }
+  .hm-balance .value { font-family: var(--serif); font-size: 22px; color: var(--ok); font-weight: 600; }
+  .hm-goal { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 10px; padding: 10px 12px; font-size: 12px; color: var(--warn-ink); }
+
+  /* How it works */
+  .how { padding: 64px 24px; }
+  .section-head { text-align: center; margin-bottom: 40px; }
+  .section-head .eyebrow { display: block; margin-bottom: 10px; }
+  h2 {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3vw, 34px); margin: 0;
+    color: var(--text); text-wrap: balance;
+  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px 22px;
+    display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow);
+  }
+  .step-num {
+    font-family: var(--serif); font-size: 28px; color: var(--accent); font-weight: 500;
+  }
+  .step h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 0; color: var(--text); }
+  .step p { margin: 0; font-size: 14px; color: var(--text-secondary); }
+
+  /* Fairness callout */
+  .fair {
+    padding: 60px 24px; background: var(--ink-panel); color: #f3e9db;
+  }
+  .fair .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .fair h2 { color: #f3e9db; }
+  .fair p { color: #cbb99f; font-size: 16px; max-width: 52ch; margin: 16px 0 0; }
+  .fair-compare { display: flex; flex-direction: column; gap: 14px; }
+  .fair-row {
+    display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px;
+    border: 1px solid #3a2f23; background: #261e17;
+  }
+  .fair-row.is-bad { opacity: 0.6; }
+  .fair-icon {
+    width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 15px;
+  }
+  .fair-row.is-bad .fair-icon { background: #3a2f23; color: #cbb99f; }
+  .fair-row.is-good .fair-icon { background: var(--ok-bg); color: var(--ok); }
+  .fair-text strong { display: block; font-size: 14.5px; color: #f3e9db; }
+  .fair-text span { font-size: 12.5px; color: #a8987e; }
+
+  /* Trust */
+  .trust { padding: 64px 24px; }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .trust-item { display: flex; flex-direction: column; gap: 8px; }
+  .trust-icon { width: 34px; height: 34px; color: var(--accent); }
+  .trust-item h3 { font-family: var(--serif); font-size: 16.5px; font-weight: 600; margin: 0; color: var(--text); }
+  .trust-item p { margin: 0; font-size: 13.5px; color: var(--text-secondary); }
+
+  /* Pricing */
+  .pricing { padding: 64px 24px 40px; }
+  .price-card {
+    max-width: 420px; margin: 0 auto; background: var(--card); border: 1px solid var(--border-strong);
+    border-radius: 20px; padding: 34px 32px; text-align: center; box-shadow: var(--shadow-lg);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .price-figure { display: flex; align-items: baseline; justify-content: center; gap: 6px; }
+  .price-figure .amount {
+    font-family: var(--serif); font-size: 48px; font-weight: 500; color: var(--text);
+  }
+  .price-figure .period { font-size: 14px; color: var(--muted); }
+  .price-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+  .price-list li { display: flex; gap: 10px; font-size: 14px; color: var(--text-secondary); align-items: flex-start; }
+  .price-list svg { width: 16px; height: 16px; color: var(--ok); flex-shrink: 0; margin-top: 2px; }
+
+  /* FAQ */
+  .faq { padding: 56px 24px 80px; }
+  .faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 18px 4px; }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer;
+    font-weight: 600; font-size: 15px; color: var(--text); list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q .chev { transition: transform 0.15s ease; color: var(--muted); flex-shrink: 0; }
+  details[open] .faq-q .chev { transform: rotate(180deg); }
+  .faq-a { margin: 12px 0 0; font-size: 14px; color: var(--text-secondary); max-width: 62ch; }
+
+  .draft-footer {
+    text-align: center; font-size: 12.5px; color: var(--muted); padding: 24px; border-top: 1px dashed var(--border-strong);
+  }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .fair .inner { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="draft-banner">Borrador de página de venta — precio ya decidido (24 €), falta el enlace de pago real.</div>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Gastos de la casa</div>
+    <h1>Reparte los gastos, <em>no a partes iguales</em> — según lo que gana cada uno.</h1>
+    <p class="hero-sub">
+      Sube la foto del ticket. La app lee el importe, la fecha y la tienda sola.
+      Y calcula lo que le toca pagar a cada quien — justo, no igual.
+    </p>
+    <div class="hero-cta-row">
+      <a class="btn btn-primary" href="#precio">Consíguela ahora →</a>
+      <span class="price-note">Pago único · 24 €</span>
+    </div>
+  </div>
+
+  <div class="hero-mock">
+    <div class="hm-card">
+      <div class="hm-title">Resumen de julio</div>
+      <div class="hm-row">
+        <div class="hm-name"><span class="hm-dot" style="background:var(--tu);"></span>Marta</div>
+        <div class="hm-amount">1.800 €</div>
+      </div>
+      <div class="hm-row">
+        <div class="hm-name"><span class="hm-dot" style="background:var(--neysa);"></span>Diego</div>
+        <div class="hm-amount">1.100 €</div>
+      </div>
+      <div class="hm-bar-track">
+        <div class="hm-bar-tu" style="width:62%;"></div>
+        <div class="hm-bar-neysa" style="width:38%;"></div>
+      </div>
+      <div class="hm-pct-row"><span>Marta paga el 62%</span><span>Diego paga el 38%</span></div>
+      <div class="hm-divider"></div>
+      <div class="hm-balance">
+        <span class="label">Diego le debe a Marta</span>
+        <span class="value">84,20 €</span>
+      </div>
+      <div class="hm-goal">🎯 Objetivo "Viaje a Lisboa": os faltan 210 € — a este ritmo, en 3 meses.</div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="inner">
+    <div class="section-head">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2>Tres pasos, ningún Excel</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Sube el ticket o la factura</h3>
+        <p>Una foto, un PDF o un pantallazo — lo que tengas a mano. Nada de escribir importes uno a uno.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>La app lo lee sola</h3>
+        <p>Importe, fecha y tienda, extraídos automáticamente. Tú solo confirmas si es compartido o personal.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Se reparte justo</h3>
+        <p>Según el ingreso de cada uno, no al 50/50. Y ves quién le debe a quién, siempre al día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fair">
+  <div class="inner">
+    <div>
+      <span class="eyebrow" style="color:#eda06f;">La diferencia real</span>
+      <h2>¿Por qué el 50/50 no es justo?</h2>
+      <p>
+        Si una persona gana el doble que la otra, repartir los gastos a partes iguales
+        deja a quien gana menos con mucho menos margen a fin de mes. Esta app reparte
+        según el ingreso real de cada quien — así el esfuerzo es el mismo para las dos.
+      </p>
+    </div>
+    <div class="fair-compare">
+      <div class="fair-row is-bad">
+        <div class="fair-icon">½</div>
+        <div class="fair-text"><strong>Otras apps: 50/50</strong><span>Da igual quién gane más — pagáis lo mismo.</span></div>
+      </div>
+      <div class="fair-row is-good">
+        <div class="fair-icon">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="fair-text"><strong>Gastos de la casa: proporcional</strong><span>Cada quien aporta según lo que gana. Mismo esfuerzo, no misma cifra.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="inner">
+    <div class="section-head">
+      <span class="eyebrow">Privacidad</span>
+      <h2>Es vuestra. Solo vuestra.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Copia privada</h3>
+        <p>Tu propia instalación, con tu propia base de datos. Nadie más tiene acceso, ni siquiera nosotros.</p>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Sin suscripción a terceros</h3>
+        <p>Se aloja en cuentas gratuitas tuyas — no dependes de que sigamos existiendo para seguir usándola.</p>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l5-5M4 12l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Te llevas tus datos</h3>
+        <p>Puedes exportar o borrar todo cuando quieras. Es tu información, en tu base de datos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="precio">
+  <div class="section-head">
+    <span class="eyebrow">Precio</span>
+    <h2>Una vez. Tuya para siempre.</h2>
+  </div>
+  <div class="price-card">
+    <div class="price-figure">
+      <span class="amount">24 €</span>
+    </div>
+    <div class="price-note">Pago único, sin mensualidades a nosotros.</div>
+    <ul class="price-list">
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu copia privada de la app</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Guía visual paso a paso para ponerla en marcha</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sin límite de uso, sin coste recurrente para nosotros</li>
+    </ul>
+    <a class="btn btn-primary" href="#" style="justify-content:center;">Comprar ahora →</a>
+    <div class="price-note">( enlace de pago pendiente de configurar )</div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="narrow">
+    <div class="section-head" style="margin-bottom:24px;">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Antes de decidir</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">¿Necesito saber programar?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="faq-a">No. Solo hace falta crear dos cuentas gratuitas siguiendo una guía visual paso a paso — sin tocar código.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">¿Qué necesito para usarla?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="faq-a">Un ordenador o un móvil, y dos cuentas gratuitas (una para leer tickets, otra para guardar los datos). Se hace una vez y ya está.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">¿Es privada?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="faq-a">Sí. Es tu propia copia, con tu propia base de datos. Nadie más — ni nosotros — puede ver tus gastos.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">¿Incluye soporte si me atasco configurándola?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="faq-a">No incluye soporte técnico personalizado. A cambio, la guía paso a paso trae capturas de cada pantalla real y una sección de dudas frecuentes con los tropiezos más comunes ya resueltos — pensada para que no lo necesites.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">¿Sirve si vivimos más de dos personas?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="faq-a">Ahora mismo está pensada para dos personas. Una versión para más personas (o para una sola) está en camino.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="draft-footer">
+  Borrador para revisar — falta: enlace de pago real, y decidir si el nombre "Gastos de la casa" es el definitivo.
+</div>
