@@ -1,0 +1,790 @@
+<title>Puesta en marcha · Gastos de la casa</title>
+<style>
+  :root {
+    --bg: #f7f1e7;
+    --page: #f2ead9;
+    --card: #fffaf2;
+    --card-raised: #ffffff;
+    --text: #2e2419;
+    --text-secondary: #6b5c4a;
+    --muted: #97876f;
+    --border: #e8dcc6;
+    --border-strong: #ddccae;
+    --accent: #b1552c;
+    --accent-hover: #96431f;
+    --accent-ink: #fffaf2;
+    --ok: #0c7a2e;
+    --ok-bg: #e7f3e5;
+    --warn-bg: #fbf0da;
+    --warn-border: #dba238;
+    --warn-ink: #6b4a12;
+    --shadow: 0 1px 2px rgba(46, 36, 25, 0.05), 0 8px 24px rgba(46, 36, 25, 0.07);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1d1712; --page: #17120e; --card: #261e17; --card-raised: #2c231a;
+      --text: #f3e9db; --text-secondary: #cbb99f; --muted: #937e63;
+      --border: #3a2f23; --border-strong: #4a3c2c;
+      --accent: #e08a56; --accent-hover: #eda06f; --accent-ink: #201408;
+      --ok: #4fbf72; --ok-bg: #1c2a1c;
+      --warn-bg: #2e2410; --warn-border: #8a6320; --warn-ink: #f0cf8e;
+      --shadow: 0 1px 2px rgba(0,0,0,0.25), 0 10px 28px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1d1712; --page: #17120e; --card: #261e17; --card-raised: #2c231a;
+    --text: #f3e9db; --text-secondary: #cbb99f; --muted: #937e63;
+    --border: #3a2f23; --border-strong: #4a3c2c;
+    --accent: #e08a56; --accent-hover: #eda06f; --accent-ink: #201408;
+    --ok: #4fbf72; --ok-bg: #1c2a1c;
+    --warn-bg: #2e2410; --warn-border: #8a6320; --warn-ink: #f0cf8e;
+    --shadow: 0 1px 2px rgba(0,0,0,0.25), 0 10px 28px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f1e7; --page: #f2ead9; --card: #fffaf2; --card-raised: #ffffff;
+    --text: #2e2419; --text-secondary: #6b5c4a; --muted: #97876f;
+    --border: #e8dcc6; --border-strong: #ddccae;
+    --accent: #b1552c; --accent-hover: #96431f; --accent-ink: #fffaf2;
+    --ok: #0c7a2e; --ok-bg: #e7f3e5;
+    --warn-bg: #fbf0da; --warn-border: #dba238; --warn-ink: #6b4a12;
+    --shadow: 0 1px 2px rgba(46, 36, 25, 0.05), 0 8px 24px rgba(46, 36, 25, 0.07);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .masthead { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+  .kicker {
+    font-family: var(--sans); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 5vw, 40px);
+    margin: 0; color: var(--text); text-wrap: balance; letter-spacing: -0.01em;
+  }
+  .lede { font-size: 16.5px; color: var(--text-secondary); max-width: 56ch; margin: 0; }
+  .lede strong { color: var(--text); font-weight: 600; }
+
+  .progress-rail {
+    display: flex; align-items: center; gap: 10px; margin-top: 4px;
+  }
+  .progress-track {
+    flex: 1; height: 6px; border-radius: 4px; background: var(--border);
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--accent); border-radius: 4px;
+    width: 0%; transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 12.5px; color: var(--muted); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stage {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 26px 28px 28px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 16px;
+    transition: opacity 0.2s ease;
+  }
+  .stage.is-done { opacity: 0.72; }
+  .stage-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .stage-heading { display: flex; flex-direction: column; gap: 6px; }
+  .stage-eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .stage h2 {
+    font-family: var(--serif); font-weight: 500; font-size: 22px; margin: 0; color: var(--text);
+  }
+  .stage p.why { margin: 0; color: var(--text-secondary); font-size: 15px; max-width: 58ch; }
+
+  .done-chip {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600;
+    color: var(--ok); background: var(--ok-bg); border-radius: 999px; padding: 5px 11px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .done-chip svg { width: 13px; height: 13px; }
+
+  .action-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans);
+    font-weight: 600; font-size: 14.5px; padding: 11px 18px; border-radius: 10px;
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: background 0.15s ease, transform 0.05s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-strong); }
+  .btn-ghost:hover { background: var(--card-raised); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .field-group { display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+  .field input {
+    font-family: var(--sans); font-size: 14px; padding: 10px 12px; border-radius: 8px;
+    border: 1px solid var(--border-strong); background: var(--card-raised); color: var(--text);
+    width: 100%;
+  }
+  .field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .field input::placeholder { color: var(--muted); }
+
+  .check-row {
+    display: flex; align-items: center; gap: 9px; margin-top: 4px; cursor: pointer;
+    user-select: none; width: fit-content;
+  }
+  .check-row input[type="checkbox"] {
+    width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer;
+  }
+  .check-row span { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+  .check-row.is-checked span { color: var(--ok); }
+
+  .segmented {
+    display: inline-flex; background: var(--page); border: 1px solid var(--border);
+    border-radius: 10px; padding: 3px; width: fit-content; gap: 2px;
+  }
+  .segmented button {
+    font-family: var(--sans); font-size: 13.5px; font-weight: 600; padding: 7px 14px;
+    border-radius: 7px; border: none; background: transparent; color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .segmented button.is-active { background: var(--card-raised); color: var(--text); box-shadow: var(--shadow); }
+
+  .deploy-view { display: none; flex-direction: column; gap: 14px; }
+  .deploy-view.is-active { display: flex; }
+
+  .callout {
+    display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 10px;
+    background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-ink);
+    font-size: 13.5px; line-height: 1.5;
+  }
+  .callout svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .manual-steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .manual-steps li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text-secondary); }
+  .manual-steps li .num {
+    flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--border);
+    color: var(--text-secondary); font-size: 11.5px; font-weight: 700; display: flex;
+    align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .manual-steps li strong { color: var(--text); font-weight: 600; }
+
+  /* Annotated screen mockups: faithful, simplified recreations of the real
+     Gemini/Turso/Render screens, with our own numbered call-outs layered on
+     top in the accent color so it's obvious which marks are ours vs theirs. */
+  .mock {
+    border-radius: 12px; border: 1px solid #d9d9d9; background: #ffffff;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .mock-bar {
+    display: flex; align-items: center; gap: 6px; padding: 8px 12px;
+    background: #f1f1f1; border-bottom: 1px solid #e2e2e2;
+  }
+  .mock-dot { width: 8px; height: 8px; border-radius: 50%; background: #d7d7d7; flex-shrink: 0; }
+  .mock-url {
+    margin-left: 8px; font-size: 11px; color: #6b6b6b; font-family: var(--sans);
+    background: #fff; border: 1px solid #e2e2e2; border-radius: 6px; padding: 3px 10px;
+    flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .mock-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .mock-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+  .mock-target { position: relative; display: inline-flex; }
+  .mock-pin {
+    position: absolute; top: -9px; left: -9px; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #fff;
+    z-index: 2;
+  }
+  .mock-pin.is-warn { background: var(--warn-border); color: #4a3308; }
+
+  .g-btn {
+    background: #0b57d0; color: #fff; font-size: 13px; font-weight: 600; border-radius: 6px;
+    padding: 8px 14px; font-family: var(--sans); display: inline-flex;
+  }
+  .g-label { font-size: 13.5px; color: #3c4043; font-weight: 600; }
+  .g-key-chip {
+    display: flex; align-items: center; gap: 10px; background: #f8f9fa; border: 1px solid #e2e2e2;
+    border-radius: 8px; padding: 8px 10px 8px 12px;
+  }
+  .g-key-chip code { font-family: ui-monospace, monospace; font-size: 12.5px; color: #3c4043; }
+  .g-copy {
+    width: 26px; height: 26px; border-radius: 6px; border: 1px solid #dcdcdc; background: #fff;
+    display: flex; align-items: center; justify-content: center; color: #5f6368;
+  }
+  .g-dialog-title { font-size: 14.5px; font-weight: 700; color: #202124; }
+  .g-field-label { font-size: 12px; color: #5f6368; }
+  .g-input {
+    background: #fff; border: 1px solid #dadce0; border-radius: 6px; padding: 8px 11px;
+    font-size: 12.5px; color: #3c4043; width: 100%;
+  }
+  .g-dialog-actions { display: flex; justify-content: flex-end; gap: 14px; align-items: center; }
+  .g-btn-text { font-size: 13px; font-weight: 600; color: #5f6368; }
+
+  .mock-connector {
+    text-align: center; font-size: 12.5px; color: var(--muted); font-weight: 600;
+    padding: 0 0 2px;
+  }
+  .ts-logo {
+    display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px;
+    color: #16181d; justify-content: center; letter-spacing: 0.01em;
+  }
+  .ts-heading { font-size: 14.5px; font-weight: 700; color: #16181d; text-align: center; }
+  .ts-sub { font-size: 12px; color: #6b6b6b; text-align: center; margin-top: -6px; }
+  .ts-oauth-row { display: flex; gap: 10px; justify-content: center; }
+  .ts-oauth-btn {
+    border: 1px solid #e2e2e2; border-radius: 8px; padding: 8px 16px; font-size: 12.5px;
+    font-weight: 600; color: #3c3c3c; display: flex; align-items: center; gap: 6px; background: #fff;
+  }
+  .t-sidebar-tag { font-size: 11px; color: #8a8a8a; font-weight: 600; }
+  .t-heading { font-size: 14px; font-weight: 700; color: #16181d; }
+  .t-field-label { font-size: 11.5px; color: #6b6b6b; }
+  .t-field {
+    display: flex; align-items: center; gap: 8px; background: #fafafa; border: 1px solid #e4e4e4;
+    border-radius: 8px; padding: 8px 10px; font-family: ui-monospace, monospace; font-size: 12px;
+    color: #2b2b2b; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .t-btn { background: #16181d; color: #fff; font-size: 12.5px; font-weight: 600; border-radius: 7px; padding: 8px 14px; }
+  .t-token-panel { background: #fafafa; border: 1px solid #e4e4e4; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .t-token-title { font-size: 12.5px; font-weight: 700; color: #16181d; }
+
+  .r-btn { background: #000; color: #fff; font-size: 13.5px; font-weight: 600; border-radius: 8px; padding: 10px 16px; display: inline-flex; align-items: center; gap: 6px; }
+  .r-plan-row { display: flex; gap: 10px; }
+  .r-plan {
+    border: 1.5px solid #e2e2e2; border-radius: 8px; padding: 10px 14px; font-size: 12.5px;
+    color: #3c3c3c; min-width: 110px;
+  }
+  .r-plan strong { display: block; font-size: 13px; color: #16181d; }
+  .r-plan.is-selected { border-color: #7c5cff; box-shadow: 0 0 0 1px #7c5cff inset; }
+  .r-envrow { display: flex; gap: 8px; }
+  .r-envcell {
+    flex: 1; background: #fafafa; border: 1px solid #e2e2e2; border-radius: 7px; padding: 7px 10px;
+    font-family: ui-monospace, monospace; font-size: 11.5px; color: #3c3c3c; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  .mock-notes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .mock-notes li { display: flex; gap: 9px; align-items: flex-start; font-size: 13px; color: var(--text-secondary); }
+  .mock-notes .num {
+    flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--accent);
+    color: var(--accent-ink); font-size: 10.5px; font-weight: 700; display: flex;
+    align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .mock-notes .num.is-warn { background: var(--warn-border); color: #4a3308; }
+  .mock-notes li strong { color: var(--text); font-weight: 600; }
+
+  .closing {
+    background: var(--card-raised); border: 1px dashed var(--border-strong); border-radius: 16px;
+    padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .closing h3 { font-family: var(--serif); font-weight: 500; font-size: 18px; margin: 0; }
+  .closing p { margin: 0; color: var(--text-secondary); font-size: 14.5px; max-width: 56ch; }
+
+  .draft-note {
+    font-size: 12.5px; color: var(--muted); text-align: center; padding-top: 8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+  <div class="masthead">
+    <div class="kicker">Gastos de la casa · antes de empezar</div>
+    <h1>Tu panel está a tres pasos de funcionar</h1>
+    <p class="lede">
+      Todo gratis, todo tuyo, unos <strong>15 minutos</strong> en total. No hace falta
+      escribir ni una línea de código — solo crear dos cuentas y pegar unos datos.
+    </p>
+    <div class="progress-rail">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 de 3 hechos</div>
+    </div>
+    <div class="callout" style="margin-top:4px;">
+      <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="9" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M7 16h6M10 13v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Haz esta configuración desde un <strong>ordenador</strong>, no desde el móvil — vas a copiar y pegar claves entre varias pestañas, y es mucho más cómodo con teclado. Una vez configurada, el día a día (subir tickets) funciona perfectamente desde el móvil.</span>
+    </div>
+  </div>
+
+  <section class="stage" data-stage="1">
+    <div class="stage-head">
+      <div class="stage-heading">
+        <div class="stage-eyebrow">Paso 1 de 3</div>
+        <h2>Tu clave de lectura de tickets</h2>
+      </div>
+      <div class="done-chip" hidden>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Hecho
+      </div>
+    </div>
+    <p class="why">
+      Esta clave, de Google, es lo que le permite a la app leer el importe, la fecha y
+      la tienda de cada foto de ticket que subas — así no escribes cada gasto a mano.
+      Es gratuita y solo tú la usas.
+    </p>
+    <div class="action-row">
+      <a class="btn btn-primary" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">
+        Crear mi clave gratis ↗
+      </a>
+    </div>
+    <p class="why" style="font-size:13px;">
+      ¿No tienes cuenta de Google? Al pulsar el botón te pedirá iniciar sesión —
+      dale a <strong>"Crear cuenta"</strong> (abajo a la izquierda de esa pantalla) y sigue los
+      pasos, tarda un par de minutos. Si ya tienes Gmail, esa es tu cuenta de Google.
+    </p>
+
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <div class="mock-url">aistudio.google.com/apikey</div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-row">
+          <span class="g-label">Claves de API</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-target">
+            <span class="mock-pin">1</span>
+            <span class="g-btn">🔑 Crear clave de API</span>
+          </span>
+        </div>
+        <ol class="mock-notes">
+          <li><span class="num">1</span><span>Pulsa este botón, arriba a la derecha de la página.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mock-connector">↓ se abre una ventana pequeña</div>
+
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <div class="mock-url">aistudio.google.com/apikey</div>
+      </div>
+      <div class="mock-body">
+        <div class="g-dialog-title">Crea una clave nueva</div>
+        <div class="g-field-label">Asigna un nombre a la clave</div>
+        <span class="g-input">Gemini API Key</span>
+        <div class="g-field-label" style="margin-top:4px;">Elige un proyecto importado</div>
+        <span class="mock-target">
+          <span class="mock-pin">2</span>
+          <span class="g-input" style="display:inline-block; min-width:220px;">— (se crea uno solo) ▾</span>
+        </span>
+        <div class="g-dialog-actions" style="margin-top:6px;">
+          <span class="g-btn-text">Cancelar</span>
+          <span class="mock-target">
+            <span class="mock-pin">3</span>
+            <span class="g-input" style="background:#f1f3f4; font-weight:600; text-align:center;">Crear clave</span>
+          </span>
+        </div>
+        <ol class="mock-notes">
+          <li><span class="num">2</span><span>Deja el nombre como está y, en "proyecto", deja lo que venga puesto — si es tu primera vez, Google crea uno automáticamente. No hay nada que entender ni configurar aquí.</span></li>
+          <li><span class="num">3</span><span>Pulsa "Crear clave".</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mock-connector">↓ y tu clave ya aparece lista para copiar</div>
+
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <div class="mock-url">aistudio.google.com/apikey</div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-row">
+          <div class="g-key-chip" style="flex:1;">
+            <code>AQ.Ab8•••••••••••••••7Q</code>
+            <span class="mock-target" style="margin-left:auto;">
+              <span class="mock-pin">4</span>
+              <span class="g-copy">⧉</span>
+            </span>
+          </div>
+        </div>
+        <ol class="mock-notes">
+          <li><span class="num">4</span><span>Copia la clave con este icono y pégala en el campo de abajo.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="gemini-key">Pega aquí tu clave (empieza distinto cada vez, no pasa nada)</label>
+        <input type="text" id="gemini-key" placeholder="Ej. AQ.Ab8..." autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <label class="check-row" data-check="1">
+      <input type="checkbox" id="check-1">
+      <span>Ya tengo mi clave guardada</span>
+    </label>
+  </section>
+
+  <section class="stage" data-stage="2">
+    <div class="stage-head">
+      <div class="stage-heading">
+        <div class="stage-eyebrow">Paso 2 de 3</div>
+        <h2>Dónde se guardan tus datos</h2>
+      </div>
+      <div class="done-chip" hidden>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Hecho
+      </div>
+    </div>
+    <p class="why">
+      Aquí quedan guardados tus gastos de forma permanente, para siempre y solo para ti.
+      Es una cuenta gratuita, tarda dos minutos.
+    </p>
+    <div class="action-row">
+      <a class="btn btn-primary" href="https://turso.tech" target="_blank" rel="noopener">
+        Crear cuenta gratis ↗
+      </a>
+    </div>
+
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <div class="mock-url">app.turso.tech</div>
+      </div>
+      <div class="mock-body">
+        <div class="ts-logo">🐂 TURSO</div>
+        <div class="ts-heading">Sign in to Turso</div>
+        <div class="ts-sub">Welcome! Please sign in to continue</div>
+        <div class="ts-oauth-row">
+          <span class="ts-oauth-btn">⌥ GitHub</span>
+          <span class="mock-target">
+            <span class="mock-pin">1</span>
+            <span class="ts-oauth-btn">G Google</span>
+          </span>
+        </div>
+        <ol class="mock-notes">
+          <li><span class="num">1</span><span>Entra con tu cuenta de Google — es la más rápida. (GitHub también vale si ya tienes cuenta ahí.)</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mock-connector">↓ una vez dentro, pulsa "Create Database"</div>
+
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <div class="mock-url">app.turso.tech · Create Database</div>
+      </div>
+      <div class="mock-body">
+        <div class="t-field-label">Name</div>
+        <span class="mock-target">
+          <span class="mock-pin">2</span>
+          <span class="t-field" style="width:100%;">mi-base-de-datos</span>
+        </span>
+        <div class="t-field-label" style="margin-top:2px;">Primary location</div>
+        <span class="mock-target">
+          <span class="mock-pin is-warn">!</span>
+          <span class="t-field" style="width:100%;">AWS EU West (Ireland) ▾</span>
+        </span>
+        <div class="mock-row" style="margin-top:2px;">
+          <span class="t-btn">+ Create Database</span>
+        </div>
+        <ol class="mock-notes">
+          <li><span class="num">2</span><span>Ponle el nombre que quieras, no importa cuál — nadie más lo verá.</span></li>
+          <li><span class="num is-warn">!</span><span>Elige cualquier ubicación de la lista. Si la dejas sin elegir, Turso da un error al crear la base de datos.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mock-connector">↓ y ya dentro de tu base de datos, aquí sacas los dos datos que necesitas</div>
+
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <div class="mock-url">app.turso.tech/tu-cuenta/databases/tu-base</div>
+      </div>
+      <div class="mock-body">
+        <div class="t-sidebar-tag">Connect</div>
+        <div class="mock-row">
+          <span class="t-field-label" style="width:100%; display:block; margin-bottom:-4px;">Database URL</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-target" style="flex:1;">
+            <span class="mock-pin">1</span>
+            <span class="t-field">libsql://tu-base-datos.turso.io</span>
+          </span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-target">
+            <span class="mock-pin">2</span>
+            <span class="t-btn">+ Create Token</span>
+          </span>
+        </div>
+        <div class="t-token-panel">
+          <div class="t-token-title">Token Created! · solo se muestra una vez</div>
+          <div class="mock-row">
+            <span class="mock-target" style="flex:1;">
+              <span class="mock-pin">3</span>
+              <span class="t-field">eyJhbGciOiJFZER••••••••••••••••••</span>
+            </span>
+          </div>
+        </div>
+        <ol class="mock-notes">
+          <li><span class="num">1</span><span>Copia la URL — siempre empieza por <strong>libsql://</strong></span></li>
+          <li><span class="num">2</span><span>Pulsa aquí para generar tu token de acceso.</span></li>
+          <li><span class="num">3</span><span>Cópialo ya mismo: Turso solo lo enseña <strong>esta vez</strong>. Si lo pierdes, creas otro igual de fácil.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="turso-url">La URL de tu base de datos (empieza por "libsql://")</label>
+        <input type="text" id="turso-url" placeholder="libsql://tu-base-de-datos.turso.io" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="turso-token">Tu token de acceso</label>
+        <input type="text" id="turso-token" placeholder="Pégalo aquí" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <label class="check-row" data-check="2">
+      <input type="checkbox" id="check-2">
+      <span>Ya tengo la URL y el token guardados</span>
+    </label>
+  </section>
+
+  <section class="stage" data-stage="3">
+    <div class="stage-head">
+      <div class="stage-heading">
+        <div class="stage-eyebrow">Paso 3 de 3</div>
+        <h2>Poner en marcha tu panel</h2>
+      </div>
+      <div class="done-chip" hidden>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Hecho
+      </div>
+    </div>
+    <p class="why">Elige la forma que te resulte más cómoda — las dos terminan en el mismo sitio.</p>
+
+    <div class="segmented" role="tablist">
+      <button type="button" class="is-active" data-view="auto" role="tab" aria-selected="true">Automático</button>
+      <button type="button" data-view="manual" role="tab" aria-selected="false">Paso a paso</button>
+    </div>
+
+    <div class="deploy-view is-active" data-view="auto">
+      <div class="mock">
+        <div class="mock-bar">
+          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          <div class="mock-url">render.com/deploy</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-row">
+            <span class="mock-target">
+              <span class="mock-pin">1</span>
+              <span class="r-btn">⛁ Deploy to Render</span>
+            </span>
+          </div>
+          <ol class="mock-notes">
+            <li><span class="num">1</span><span>Pulsa aquí e inicia sesión con tu cuenta gratuita de Render (puedes usar tu Google).</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="callout">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 6.5v4.2M10 13.2h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Nota interna: este botón solo funciona si la copia de la app es pública en GitHub. Con el repositorio privado, cada compradora vería un error de acceso aquí — hay que decidir esto antes de ofrecer esta opción.</span>
+      </div>
+    </div>
+
+    <div class="deploy-view" data-view="manual">
+      <ol class="manual-steps">
+        <li><span class="num">1</span><span>Entra en <strong>render.com</strong> y crea una cuenta gratuita (puedes usar tu Google).</span></li>
+        <li><span class="num">2</span><span>Pulsa <strong>"New" → "Web Service"</strong> y conecta tu copia de la app.</span></li>
+      </ol>
+
+      <div class="mock">
+        <div class="mock-bar">
+          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          <div class="mock-url">dashboard.render.com/web/new</div>
+        </div>
+        <div class="mock-body">
+          <div class="t-field-label">Instance Type</div>
+          <div class="r-plan-row">
+            <span class="mock-target">
+              <span class="mock-pin">1</span>
+              <span class="r-plan">Free<strong>$0 /mes</strong></span>
+            </span>
+            <span class="mock-target">
+              <span class="mock-pin is-warn">!</span>
+              <span class="r-plan is-selected">Starter<strong>$7 /mes</strong></span>
+            </span>
+          </div>
+          <ol class="mock-notes">
+            <li><span class="num">1</span><span>Elige <strong>Free</strong>.</span></li>
+            <li><span class="num is-warn">!</span><span>Render marca "Starter" (de pago) <strong>por defecto</strong> — si no lo cambias, te cobrará 7$/mes sin querer.</span></li>
+          </ol>
+
+          <div class="t-field-label" style="margin-top:6px;">Environment Variables</div>
+          <div class="r-envrow">
+            <span class="r-envcell" style="flex:0 0 40%;">GEMINI_API_KEY</span>
+            <span class="mock-target" style="flex:1;">
+              <span class="mock-pin">2</span>
+              <span class="r-envcell">••••••••••••••••</span>
+            </span>
+          </div>
+          <div class="r-envrow">
+            <span class="r-envcell" style="flex:0 0 40%;">TURSO_DATABASE_URL</span>
+            <span class="mock-target" style="flex:1;">
+              <span class="mock-pin">3</span>
+              <span class="r-envcell">••••••••••••••••</span>
+            </span>
+          </div>
+          <div class="r-envrow">
+            <span class="r-envcell" style="flex:0 0 40%;">TURSO_AUTH_TOKEN</span>
+            <span class="mock-target" style="flex:1;">
+              <span class="mock-pin">4</span>
+              <span class="r-envcell">••••••••••••••••</span>
+            </span>
+          </div>
+          <ol class="mock-notes">
+            <li><span class="num">2</span><span>Pega aquí tu <strong>clave de Gemini</strong> (Paso 1).</span></li>
+            <li><span class="num">3</span><span>Pega aquí la <strong>URL de Turso</strong> (Paso 2).</span></li>
+            <li><span class="num">4</span><span>Pega aquí el <strong>token de Turso</strong> (Paso 2).</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <ol class="manual-steps" start="3">
+        <li><span class="num">3</span><span>Pulsa <strong>Deploy</strong> y espera 2-3 minutos.</span></li>
+      </ol>
+    </div>
+
+    <label class="check-row" data-check="3">
+      <input type="checkbox" id="check-3">
+      <span>Ya lo desplegué</span>
+    </label>
+  </section>
+
+  <section class="stage">
+    <div class="stage-heading">
+      <div class="stage-eyebrow">Si algo no cuadra</div>
+      <h2>Dudas frecuentes al configurar</h2>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label>"Turso me da un error al crear la base de datos"</label>
+        <p class="why" style="margin:0;">Seguro que dejaste "Primary location" sin elegir. Vuelve al formulario y selecciona cualquier ubicación de la lista — con cualquiera vale.</p>
+      </div>
+      <div class="field">
+        <label>"Render me está pidiendo pagar / una tarjeta"</label>
+        <p class="why" style="margin:0;">El plan de pago "Starter" viene marcado por defecto. Antes de darle a Deploy, cambia la selección a "Free" — es el gratuito.</p>
+      </div>
+      <div class="field">
+        <label>"No sé si mi clave/token es correcto"</label>
+        <p class="why" style="margin:0;">Revisa que no tenga espacios de más al principio o al final al pegarlo — es el fallo más común al copiar y pegar.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h3>Cuando termine</h3>
+    <p>
+      Vas a ver una pantalla de bienvenida pidiendo los nombres de quienes lo van a usar
+      y la moneda. La rellenas una vez y tu panel queda funcionando para siempre.
+    </p>
+  </div>
+
+  <div class="draft-note">Borrador para revisar contigo — nada de esto está enviado a clientes todavía.</div>
+</div>
+
+<script>
+  (function () {
+    var checks = [1, 2, 3].map(function (n) {
+      return document.getElementById('check-' + n);
+    });
+    var stages = document.querySelectorAll('.stage');
+    var fill = document.getElementById('progressFill');
+    var label = document.getElementById('progressLabel');
+    var storeKey = 'gastos-casa-onboarding-progress';
+
+    function load() {
+      try { return JSON.parse(localStorage.getItem(storeKey) || '{}'); }
+      catch (e) { return {}; }
+    }
+    function save(state) {
+      try { localStorage.setItem(storeKey, JSON.stringify(state)); } catch (e) {}
+    }
+
+    function render() {
+      var state = load();
+      var doneCount = 0;
+      checks.forEach(function (cb, i) {
+        var n = i + 1;
+        var isDone = !!state[n];
+        cb.checked = isDone;
+        if (isDone) doneCount++;
+        var row = cb.closest('.check-row');
+        row.classList.toggle('is-checked', isDone);
+        var stage = document.querySelector('.stage[data-stage="' + n + '"]');
+        stage.classList.toggle('is-done', isDone);
+        stage.querySelector('.done-chip').hidden = !isDone;
+      });
+      fill.style.width = (doneCount / 3 * 100) + '%';
+      label.textContent = doneCount + ' de 3 hechos';
+    }
+
+    checks.forEach(function (cb, i) {
+      cb.addEventListener('change', function () {
+        var state = load();
+        state[i + 1] = cb.checked;
+        save(state);
+        render();
+      });
+    });
+
+    // Also mark step 1/2 done automatically once something is typed in their fields.
+    ['gemini-key'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', function (e) {
+        if (e.target.value.trim().length > 3) {
+          var state = load(); state[1] = true; save(state); render();
+        }
+      });
+    });
+    ['turso-url', 'turso-token'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', function (e) {
+        if (e.target.value.trim().length > 3) {
+          var state = load(); state[2] = true; save(state); render();
+        }
+      });
+    });
+
+    document.querySelectorAll('.segmented').forEach(function (seg) {
+      seg.addEventListener('click', function (e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        seg.querySelectorAll('button').forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        var view = btn.dataset.view;
+        document.querySelectorAll('.deploy-view').forEach(function (v) {
+          v.classList.toggle('is-active', v.dataset.view === view);
+        });
+      });
+    });
+
+    render();
+  })();
+</script>
