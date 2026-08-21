@@ -1,279 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gastos de la casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f1e7;
-    --page: #f2ead9;
-    --card: #fffaf2;
-    --card-raised: #ffffff;
-    --ink-panel: #221a10;
-    --text: #2e2419;
-    --text-secondary: #6b5c4a;
-    --muted: #97876f;
-    --border: #e8dcc6;
-    --border-strong: #ddccae;
-    --accent: #b1552c;
-    --accent-hover: #96431f;
-    --accent-ink: #fffaf2;
-    --ok: #0c7a2e;
-    --ok-bg: #e7f3e5;
-    --warn-bg: #fbf0da;
-    --warn-border: #dba238;
-    --warn-ink: #6b4a12;
-    --tu: #eb6834; --tu-track: #f6d9c6;
-    --neysa: #2a78d6; --neysa-track: #cfe0f5;
-    --shadow: 0 1px 2px rgba(46, 36, 25, 0.05), 0 8px 24px rgba(46, 36, 25, 0.07);
-    --shadow-lg: 0 4px 10px rgba(46,36,25,0.08), 0 20px 48px rgba(46,36,25,0.14);
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --black: #0c0a08;
+    --black-2: #171310;
+    --black-3: #201a14;
+    --line-black: #332a20;
+    --paper: #f3ead8;
+    --paper-2: #ece0c8;
+    --ink: #1c150d;
+    --ink-muted: #6b5c48;
+    --line-paper: #dccaa4;
+    --accent: #ff4f1f;
+    --accent-deep: #c2340c;
+    --accent-2: #ffb23e;
+    --on-black: #f3ead8;
+    --on-black-muted: #a8967d;
+    --ok: #3fbf6a;
+    --tu: #ff8a4f; --tu-track: #4a3423;
+    --neysa: #5b9bdd; --neysa-track: #24374a;
+    --shadow-deep: 0 30px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.45);
+    --glow: 0 0 140px rgba(255,79,31,0.22);
+    --display: "Bebas Neue", "Oswald", Impact, sans-serif;
+    --body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1d1712; --page: #17120e; --card: #261e17; --card-raised: #2c231a; --ink-panel: #0f0b07;
-      --text: #f3e9db; --text-secondary: #cbb99f; --muted: #937e63;
-      --border: #3a2f23; --border-strong: #4a3c2c;
-      --accent: #e08a56; --accent-hover: #eda06f; --accent-ink: #201408;
-      --ok: #4fbf72; --ok-bg: #1c2a1c;
-      --warn-bg: #2e2410; --warn-border: #8a6320; --warn-ink: #f0cf8e;
-      --tu: #d97b3f; --tu-track: #4a3423; --neysa: #5b9bdd; --neysa-track: #24374a;
-      --shadow: 0 1px 2px rgba(0,0,0,0.25), 0 10px 28px rgba(0,0,0,0.35);
-      --shadow-lg: 0 6px 16px rgba(0,0,0,0.3), 0 24px 56px rgba(0,0,0,0.45);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #1d1712; --page: #17120e; --card: #261e17; --card-raised: #2c231a; --ink-panel: #0f0b07;
-    --text: #f3e9db; --text-secondary: #cbb99f; --muted: #937e63;
-    --border: #3a2f23; --border-strong: #4a3c2c;
-    --accent: #e08a56; --accent-hover: #eda06f; --accent-ink: #201408;
-    --ok: #4fbf72; --ok-bg: #1c2a1c;
-    --warn-bg: #2e2410; --warn-border: #8a6320; --warn-ink: #f0cf8e;
-    --tu: #d97b3f; --tu-track: #4a3423; --neysa: #5b9bdd; --neysa-track: #24374a;
-    --shadow: 0 1px 2px rgba(0,0,0,0.25), 0 10px 28px rgba(0,0,0,0.35);
-    --shadow-lg: 0 6px 16px rgba(0,0,0,0.3), 0 24px 56px rgba(0,0,0,0.45);
-  }
-  :root[data-theme="light"] {
-    --bg: #f7f1e7; --page: #f2ead9; --card: #fffaf2; --card-raised: #ffffff; --ink-panel: #221a10;
-    --text: #2e2419; --text-secondary: #6b5c4a; --muted: #97876f;
-    --border: #e8dcc6; --border-strong: #ddccae;
-    --accent: #b1552c; --accent-hover: #96431f; --accent-ink: #fffaf2;
-    --ok: #0c7a2e; --ok-bg: #e7f3e5;
-    --warn-bg: #fbf0da; --warn-border: #dba238; --warn-ink: #6b4a12;
-    --tu: #eb6834; --tu-track: #f6d9c6; --neysa: #2a78d6; --neysa-track: #cfe0f5;
-    --shadow: 0 1px 2px rgba(46, 36, 25, 0.05), 0 8px 24px rgba(46, 36, 25, 0.07);
-    --shadow-lg: 0 4px 10px rgba(46,36,25,0.08), 0 20px 48px rgba(46,36,25,0.14);
-  }
-
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    background: var(--page); color: var(--text); font-family: var(--sans);
-    line-height: 1.55; -webkit-font-smoothing: antialiased;
+    margin: 0; background: var(--black); color: var(--on-black);
+    font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  section { padding: 0 24px; }
-  .inner { max-width: 980px; margin: 0 auto; }
+  section { padding: 0 24px; position: relative; }
+  .inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
   .narrow { max-width: 640px; margin: 0 auto; }
 
-  /* Hero */
-  .hero {
-    padding: 72px 24px 56px;
-    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center;
-  }
+  a { color: inherit; }
+  .btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+
   .eyebrow {
-    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent);
+    font-family: var(--body); font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent-2);
   }
-  h1 {
-    font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 4.4vw, 50px);
-    line-height: 1.08; margin: 14px 0 18px; color: var(--text); text-wrap: balance;
-    letter-spacing: -0.01em;
-  }
-  h1 em { font-style: normal; color: var(--accent); }
-  .hero-sub {
-    font-size: 17.5px; color: var(--text-secondary); max-width: 46ch; margin: 0 0 30px;
-  }
-  .hero-cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  h1, h2, h3 { font-family: var(--display); text-transform: uppercase; margin: 0; text-wrap: balance; letter-spacing: 0.01em; }
+  h1 { font-size: clamp(52px, 9vw, 128px); line-height: 0.88; color: var(--on-black); }
+  h1 .hl { color: var(--accent); }
+  h2 { font-size: clamp(32px, 5.2vw, 60px); line-height: 0.95; color: var(--on-black); }
+  h2.on-paper { color: var(--ink); }
+  h3 { font-size: 22px; line-height: 1; }
+
+  p { margin: 0; }
+  .lede { font-family: var(--body); font-size: 18px; color: var(--on-black-muted); max-width: 46ch; }
+  .lede.on-paper { color: var(--ink-muted); }
+
   .btn {
-    display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans);
-    font-weight: 700; font-size: 15.5px; padding: 14px 26px; border-radius: 12px;
-    border: 1px solid transparent; cursor: pointer; text-decoration: none;
-    transition: background 0.15s ease, transform 0.05s ease;
+    display: inline-flex; align-items: center; gap: 10px; font-family: var(--body);
+    font-weight: 800; font-size: 14.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 17px 30px; border-radius: 999px; border: none; cursor: pointer; text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .price-note { font-size: 13px; color: var(--muted); }
-  .price-note .ph { color: var(--warn-ink); font-weight: 700; background: var(--warn-bg); padding: 1px 6px; border-radius: 5px; }
+  .btn-accent { background: var(--accent); color: var(--ink); box-shadow: 0 10px 30px rgba(255,79,31,0.35); }
+  .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(255,79,31,0.45); }
+  .btn:active { transform: translateY(0px); }
+  .price-note { font-size: 13px; color: var(--on-black-muted); font-weight: 600; letter-spacing: 0.02em; }
+  .price-note.on-paper { color: var(--ink-muted); }
 
-  /* Hero mock dashboard */
-  .hero-mock {
-    background: var(--ink-panel); border-radius: 20px; padding: 20px; box-shadow: var(--shadow-lg);
+  /* grain texture on black sections */
+  .grain { position: relative; }
+  .grain::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .hm-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .hm-title { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--text); }
-  .hm-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-  .hm-name { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--text); }
-  .hm-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .hm-amount { font-size: 13.5px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
-  .hm-bar-track { height: 8px; border-radius: 5px; background: var(--border); overflow: hidden; display: flex; }
-  .hm-bar-tu { background: var(--tu); height: 100%; }
-  .hm-bar-neysa { background: var(--neysa); height: 100%; }
-  .hm-pct-row { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); font-weight: 600; }
-  .hm-divider { height: 1px; background: var(--border); margin: 2px 0; }
-  .hm-balance { display: flex; align-items: baseline; justify-content: space-between; }
-  .hm-balance .label { font-size: 12.5px; color: var(--text-secondary); }
-  .hm-balance .value { font-family: var(--serif); font-size: 22px; color: var(--ok); font-weight: 600; }
-  .hm-goal { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 10px; padding: 10px 12px; font-size: 12px; color: var(--warn-ink); }
 
-  /* How it works */
-  .how { padding: 64px 24px; }
-  .section-head { text-align: center; margin-bottom: 40px; }
+  .reveal { opacity: 0; transform: translateY(32px) scale(0.985); transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+  .reveal-2 { transition-delay: 0.12s; }
+  .reveal-3 { transition-delay: 0.24s; }
+  .reveal-4 { transition-delay: 0.36s; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 96vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 24px 80px; background:
+      radial-gradient(ellipse 900px 500px at 50% 18%, rgba(255,79,31,0.16), transparent 65%), var(--black);
+  }
+  .hero .eyebrow { margin-bottom: 22px; }
+  .hero h1 { max-width: 15ch; }
+  .hero .lede { margin: 26px auto 0; }
+  .hero-cta-row { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 36px; }
+
+  /* giant scoreboard-style receipt visual */
+  .hero-visual { margin-top: 72px; position: relative; width: min(560px, 92vw); }
+  .hero-visual-glow { position: absolute; inset: -80px; background: radial-gradient(circle, rgba(255,79,31,0.28), transparent 70%); filter: blur(6px); z-index: 0; }
+  .receipt {
+    position: relative; z-index: 1; background: var(--paper); color: var(--ink); border-radius: 6px;
+    padding: 30px 30px 24px; box-shadow: var(--shadow-deep); transform: rotate(-2.2deg);
+    font-family: var(--body);
+  }
+  .receipt::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -11px; height: 22px;
+    background:
+      radial-gradient(circle at 8px 0, transparent 8px, var(--paper) 8.5px) top left / 20px 22px repeat-x;
+  }
+  .receipt-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.5px dashed var(--line-paper); padding-bottom: 14px; margin-bottom: 14px; }
+  .receipt-head .rlabel { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .receipt-row { display: flex; justify-content: space-between; align-items: center; font-size: 14.5px; font-weight: 600; padding: 6px 0; }
+  .receipt-row .name { display: flex; align-items: center; gap: 8px; }
+  .receipt-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .receipt .amt { font-variant-numeric: tabular-nums; }
+  .receipt-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px dashed var(--line-paper); margin-top: 10px; padding-top: 14px; }
+  .receipt-total .tlabel { font-size: 13px; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .receipt-total .tval { font-family: var(--display); font-size: 34px; color: var(--accent-deep); letter-spacing: 0.02em; }
+
+  /* ============ TICKER ============ */
+  .ticker-wrap { background: var(--accent); overflow: hidden; padding: 14px 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .ticker { display: flex; width: max-content; animation: ticker-scroll 26s linear infinite; }
+  .ticker span { font-family: var(--display); font-size: 20px; letter-spacing: 0.04em; color: var(--ink); padding: 0 28px; white-space: nowrap; }
+  @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ============ SEAL ============ */
+  .seal { padding: 128px 24px 120px; text-align: center; background: var(--black-2); }
+  .seal-badge { width: 264px; height: 264px; margin: 0 auto 34px; position: relative; }
+  .seal-ring-outer { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent)); padding: 6px; }
+  .seal-ring-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--black-2); display: flex; align-items: center; justify-content: center; }
+  .seal-core { width: 78%; height: 78%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--black-3), var(--black)); border: 1.5px dashed rgba(255,178,62,0.4); display: flex; align-items: center; justify-content: center; position: relative; }
+  .seal-core svg.check { width: 46px; height: 46px; color: var(--accent-2); }
+  .seal h2 { margin-bottom: 18px; }
+  .seal .lede { margin: 0 auto; }
+  .seal-tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .seal-tag { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--accent); color: var(--accent-2); }
+
+  /* ============ SCOREBOARD ============ */
+  .scoreboard { padding: 110px 24px; background: var(--black); text-align: center; }
+  .scoreboard .eyebrow { display: block; margin-bottom: 8px; }
+  .scoreboard h2 { margin-bottom: 48px; }
+  .score-panel { display: inline-flex; align-items: center; gap: 48px; flex-wrap: wrap; justify-content: center; }
+  .score-side { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .score-name { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-black-muted); }
+  .score-pct { font-family: var(--display); font-size: clamp(64px, 11vw, 140px); line-height: 0.85; font-variant-numeric: tabular-nums; }
+  .score-pct.tu { color: var(--tu); text-shadow: 0 0 60px rgba(255,138,79,0.35); }
+  .score-pct.neysa { color: var(--neysa); text-shadow: 0 0 60px rgba(91,155,221,0.35); }
+  .score-vs { font-family: var(--display); font-size: 28px; color: var(--line-black); }
+  .score-debt { margin-top: 40px; font-size: 15px; color: var(--on-black-muted); }
+  .score-debt strong { color: var(--accent-2); font-variant-numeric: tabular-nums; font-weight: 800; }
+
+  /* ============ HOW (paper) ============ */
+  .how { padding: 120px 24px; background: var(--paper); color: var(--ink); }
+  .section-head { text-align: center; margin-bottom: 56px; }
   .section-head .eyebrow { display: block; margin-bottom: 10px; }
-  h2 {
-    font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3vw, 34px); margin: 0;
-    color: var(--text); text-wrap: balance;
-  }
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .step {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px 22px;
-    display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow);
-  }
-  .step-num {
-    font-family: var(--serif); font-size: 28px; color: var(--accent); font-weight: 500;
-  }
-  .step h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 0; color: var(--text); }
-  .step p { margin: 0; font-size: 14px; color: var(--text-secondary); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .step { display: flex; flex-direction: column; gap: 12px; padding-top: 18px; border-top: 3px solid var(--ink); }
+  .step-num { font-family: var(--display); font-size: 54px; color: var(--accent-deep); line-height: 1; }
+  .step h3 { color: var(--ink); text-transform: none; font-family: var(--body); font-weight: 800; font-size: 19px; letter-spacing: -0.01em; }
+  .step p { font-size: 14.5px; color: var(--ink-muted); }
 
-  /* Fairness callout */
-  .fair {
-    padding: 60px 24px; background: var(--ink-panel); color: #f3e9db;
-  }
-  .fair .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .fair h2 { color: #f3e9db; }
-  .fair p { color: #cbb99f; font-size: 16px; max-width: 52ch; margin: 16px 0 0; }
-  .fair-compare { display: flex; flex-direction: column; gap: 14px; }
-  .fair-row {
-    display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px;
-    border: 1px solid #3a2f23; background: #261e17;
-  }
-  .fair-row.is-bad { opacity: 0.6; }
-  .fair-icon {
-    width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 15px;
-  }
-  .fair-row.is-bad .fair-icon { background: #3a2f23; color: #cbb99f; }
-  .fair-row.is-good .fair-icon { background: var(--ok-bg); color: var(--ok); }
-  .fair-text strong { display: block; font-size: 14.5px; color: #f3e9db; }
-  .fair-text span { font-size: 12.5px; color: #a8987e; }
+  /* ============ FAIR COMPARE ============ */
+  .fair { padding: 120px 24px; background: var(--black); }
+  .fair .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .fair .lede { margin-top: 20px; }
+  .fair-compare { display: flex; flex-direction: column; gap: 16px; }
+  .fair-row { display: flex; align-items: center; gap: 18px; padding: 22px 24px; border-radius: 4px; border: 1.5px solid var(--line-black); }
+  .fair-row.is-bad { opacity: 0.55; }
+  .fair-row.is-bad .fair-icon { font-family: var(--display); font-size: 26px; color: var(--on-black-muted); }
+  .fair-row.is-good { border-color: var(--accent); background: rgba(255,79,31,0.06); }
+  .fair-icon { width: 34px; flex-shrink: 0; text-align: center; }
+  .fair-row.is-good .fair-icon svg { width: 22px; height: 22px; color: var(--accent-2); }
+  .fair-text strong { display: block; font-family: var(--display); font-size: 19px; letter-spacing: 0.02em; color: var(--on-black); text-transform: uppercase; }
+  .fair-text span { font-size: 13px; color: var(--on-black-muted); }
 
-  /* Trust */
-  .trust { padding: 64px 24px; }
-  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .trust-item { display: flex; flex-direction: column; gap: 8px; }
-  .trust-icon { width: 34px; height: 34px; color: var(--accent); }
-  .trust-item h3 { font-family: var(--serif); font-size: 16.5px; font-weight: 600; margin: 0; color: var(--text); }
-  .trust-item p { margin: 0; font-size: 13.5px; color: var(--text-secondary); }
+  /* ============ LINEUP ============ */
+  .lineup { padding: 120px 24px; background: var(--black); }
+  .lineup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .feat-card {
+    position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 3/4;
+    display: flex; flex-direction: column; justify-content: space-between; padding: 20px;
+    color: var(--ink);
+  }
+  .feat-card .feat-num { font-family: var(--display); font-size: 15px; opacity: 0.55; }
+  .feat-card .feat-name { font-family: var(--display); font-size: 24px; line-height: 0.95; text-transform: uppercase; }
+  .feat-card .feat-desc { font-family: var(--body); font-size: 12px; font-weight: 600; opacity: 0.82; margin-top: 6px; }
+  .feat-1 { background: linear-gradient(155deg, #ffb23e, #ff4f1f); }
+  .feat-2 { background: linear-gradient(155deg, #f3ead8, #dccaa4); }
+  .feat-3 { background: linear-gradient(155deg, #5b9bdd, #2a5f9e); color: var(--on-black); }
+  .feat-4 { background: linear-gradient(155deg, #ff8a4f, #c2340c); }
+  .lineup-grid.second { margin-top: 14px; grid-template-columns: repeat(3, 1fr); }
+  .feat-5 { background: linear-gradient(155deg, #3fbf6a, #1f7a3f); color: var(--on-black); }
+  .feat-6 { background: linear-gradient(155deg, #201a14, #0c0a08); color: var(--on-black); border: 1.5px solid var(--line-black); }
+  .feat-7 { background: linear-gradient(155deg, #ffdf9e, #ffb23e); }
 
-  /* Pricing */
-  .pricing { padding: 64px 24px 40px; }
-  .price-card {
-    max-width: 420px; margin: 0 auto; background: var(--card); border: 1px solid var(--border-strong);
-    border-radius: 20px; padding: 34px 32px; text-align: center; box-shadow: var(--shadow-lg);
-    display: flex; flex-direction: column; gap: 18px;
+  /* ============ RECEIPT PRICING ============ */
+  .bundle { padding: 130px 24px 140px; background: var(--black-2); text-align: center; }
+  .bundle .eyebrow { display: block; margin-bottom: 8px; }
+  .bundle h2 { margin-bottom: 52px; }
+  .ticket { max-width: 400px; margin: 0 auto; position: relative; }
+  .ticket-body {
+    background: var(--paper); color: var(--ink); border-radius: 4px; padding: 38px 34px 30px;
+    box-shadow: var(--shadow-deep); text-align: left; position: relative;
   }
-  .price-figure { display: flex; align-items: baseline; justify-content: center; gap: 6px; }
-  .price-figure .amount {
-    font-family: var(--serif); font-size: 48px; font-weight: 500; color: var(--text);
+  .ticket-body::before, .ticket-body::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 20px;
+    background: radial-gradient(circle at 10px 0, transparent 9px, var(--paper) 9.5px) top left / 20px 20px repeat-x;
   }
-  .price-figure .period { font-size: 14px; color: var(--muted); }
-  .price-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; text-align: left; }
-  .price-list li { display: flex; gap: 10px; font-size: 14px; color: var(--text-secondary); align-items: flex-start; }
-  .price-list svg { width: 16px; height: 16px; color: var(--ok); flex-shrink: 0; margin-top: 2px; }
+  .ticket-body::before { top: -10px; }
+  .ticket-body::after { bottom: -10px; transform: rotate(180deg); }
+  .ticket-head { text-align: center; border-bottom: 1.5px dashed var(--line-paper); padding-bottom: 20px; margin-bottom: 20px; }
+  .ticket-head .tname { font-family: var(--display); font-size: 20px; letter-spacing: 0.04em; }
+  .ticket-price { text-align: center; margin-bottom: 22px; }
+  .ticket-price .amount { font-family: var(--display); font-size: 76px; color: var(--accent-deep); line-height: 1; }
+  .ticket-price .period { font-size: 12.5px; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+  .ticket-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; border-top: 1.5px dashed var(--line-paper); padding-top: 20px; }
+  .ticket-list li { display: flex; gap: 10px; font-size: 14px; font-weight: 600; color: var(--ink); align-items: flex-start; }
+  .ticket-list svg { width: 15px; height: 15px; color: var(--accent-deep); flex-shrink: 0; margin-top: 3px; }
+  .ticket .btn { width: 100%; justify-content: center; margin-top: 24px; }
+  .ticket-note { text-align: center; font-size: 12px; color: var(--ink-muted); margin-top: 14px; }
 
-  /* FAQ */
-  .faq { padding: 56px 24px 80px; }
-  .faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
-  .faq-item { border-bottom: 1px solid var(--border); padding: 18px 4px; }
-  .faq-q {
-    display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer;
-    font-weight: 600; font-size: 15px; color: var(--text); list-style: none;
-  }
+  /* ============ FAQ (paper) ============ */
+  .faq { padding: 100px 24px 130px; background: var(--paper); color: var(--ink); }
+  .faq-list { display: flex; flex-direction: column; border-top: 2px solid var(--ink); }
+  .faq-item { border-bottom: 1.5px solid var(--line-paper); padding: 22px 4px; }
+  .faq-q { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; font-weight: 700; font-size: 15.5px; color: var(--ink); list-style: none; }
   .faq-q::-webkit-details-marker { display: none; }
-  .faq-q .chev { transition: transform 0.15s ease; color: var(--muted); flex-shrink: 0; }
+  .faq-q .chev { transition: transform 0.15s ease; color: var(--ink-muted); flex-shrink: 0; }
   details[open] .faq-q .chev { transform: rotate(180deg); }
-  .faq-a { margin: 12px 0 0; font-size: 14px; color: var(--text-secondary); max-width: 62ch; }
+  .faq-a { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-muted); max-width: 62ch; }
 
-  .draft-footer {
-    text-align: center; font-size: 12.5px; color: var(--muted); padding: 24px; border-top: 1px dashed var(--border-strong);
+  /* ============ FINAL CTA ============ */
+  .final-cta { padding: 130px 24px 150px; text-align: center; background: var(--black); }
+  .final-cta h2 { margin-bottom: 20px; }
+  .final-cta .lede { margin: 0 auto 36px; }
+
+  @media (max-width: 900px) {
+    .lineup-grid { grid-template-columns: repeat(2, 1fr); }
+    .lineup-grid.second { grid-template-columns: repeat(2, 1fr); }
+    .score-panel { gap: 24px; }
   }
-
   @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
     .fair .inner { grid-template-columns: 1fr; }
-    .trust-grid { grid-template-columns: 1fr; }
   }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none !important; opacity: 1; transform: none; }
+    .ticker { animation: none; }
+  }
 </style>
+</head>
+<body>
 
-<section class="hero">
-  <div>
-    <div class="eyebrow">Gastos de la casa</div>
-    <h1>Reparte los gastos, <em>no a partes iguales</em> — según lo que gana cada uno.</h1>
-    <p class="hero-sub">
-      Sube la foto del ticket. La app lee el importe, la fecha y la tienda sola.
-      Y calcula lo que le toca pagar a cada quien — justo, no igual.
-    </p>
-    <div class="hero-cta-row">
-      <a class="btn btn-primary" href="#precio">Consíguela ahora →</a>
-      <span class="price-note">Pago único · 24 €</span>
-    </div>
+<section class="hero grain">
+  <div class="eyebrow reveal">Gastos de la casa</div>
+  <h1 class="reveal reveal-2">Reparte cada gasto,<br><span class="hl">justo</span> no igual.</h1>
+  <p class="lede reveal reveal-3">Sube la foto del ticket. La app lee el importe, la fecha y la tienda sola — y calcula lo que le toca pagar a cada quien, según lo que gana.</p>
+  <div class="hero-cta-row reveal reveal-3">
+    <a class="btn btn-accent" href="#precio">Consíguela ahora →</a>
+    <span class="price-note">Pago único · 24 €</span>
   </div>
 
-  <div class="hero-mock">
-    <div class="hm-card">
-      <div class="hm-title">Resumen de julio</div>
-      <div class="hm-row">
-        <div class="hm-name"><span class="hm-dot" style="background:var(--tu);"></span>Marta</div>
-        <div class="hm-amount">1.800 €</div>
+  <div class="hero-visual reveal reveal-4">
+    <div class="hero-visual-glow"></div>
+    <div class="receipt">
+      <div class="receipt-head">
+        <span class="rlabel">Resumen · Julio</span>
+        <span class="rlabel">Gastos de la casa</span>
       </div>
-      <div class="hm-row">
-        <div class="hm-name"><span class="hm-dot" style="background:var(--neysa);"></span>Diego</div>
-        <div class="hm-amount">1.100 €</div>
+      <div class="receipt-row">
+        <span class="name"><span class="receipt-dot" style="background:var(--tu);"></span>Marta</span>
+        <span class="amt">1.800,00 €</span>
       </div>
-      <div class="hm-bar-track">
-        <div class="hm-bar-tu" style="width:62%;"></div>
-        <div class="hm-bar-neysa" style="width:38%;"></div>
+      <div class="receipt-row">
+        <span class="name"><span class="receipt-dot" style="background:var(--neysa);"></span>Diego</span>
+        <span class="amt">1.100,00 €</span>
       </div>
-      <div class="hm-pct-row"><span>Marta paga el 62%</span><span>Diego paga el 38%</span></div>
-      <div class="hm-divider"></div>
-      <div class="hm-balance">
-        <span class="label">Diego le debe a Marta</span>
-        <span class="value">84,20 €</span>
+      <div class="receipt-total">
+        <span class="tlabel">Diego le debe a Marta</span>
+        <span class="tval">84,20 €</span>
       </div>
-      <div class="hm-goal">🎯 Objetivo "Viaje a Lisboa": os faltan 210 € — a este ritmo, en 3 meses.</div>
     </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>SUBE EL TICKET</span><span>·</span><span>REPARTO PROPORCIONAL</span><span>·</span><span>SIN EXCEL</span><span>·</span><span>SALDO SIEMPRE AL DÍA</span><span>·</span>
+    <span>SUBE EL TICKET</span><span>·</span><span>REPARTO PROPORCIONAL</span><span>·</span><span>SIN EXCEL</span><span>·</span><span>SALDO SIEMPRE AL DÍA</span><span>·</span>
+  </div>
+</div>
+
+<section class="seal grain">
+  <div class="inner reveal">
+    <div class="seal-badge">
+      <div class="seal-ring-outer">
+        <div class="seal-ring-inner">
+          <div class="seal-core">
+            <svg class="check" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="eyebrow">Privacidad</span>
+    <h2>Es vuestra.<br>Solo vuestra.</h2>
+    <p class="lede" style="margin-top:18px;">Tu propia copia, con tu propia base de datos. Nadie más tiene acceso — ni siquiera nosotros. Exportas o borras todo cuando quieras.</p>
+    <div class="seal-tags">
+      <span class="seal-tag">Copia privada</span>
+      <span class="seal-tag">Sin terceros</span>
+      <span class="seal-tag">Tus datos, tuyos</span>
+    </div>
+  </div>
+</section>
+
+<section class="scoreboard grain">
+  <div class="inner reveal">
+    <span class="eyebrow">El reparto, en vivo</span>
+    <h2>Nadie paga a ciegas</h2>
+    <div class="score-panel">
+      <div class="score-side">
+        <span class="score-name">Marta</span>
+        <span class="score-pct tu">62%</span>
+      </div>
+      <span class="score-vs">/</span>
+      <div class="score-side">
+        <span class="score-name">Diego</span>
+        <span class="score-pct neysa">38%</span>
+      </div>
+    </div>
+    <p class="score-debt">Diego le debe a Marta <strong>84,20 €</strong> — actualizado con cada ticket.</p>
   </div>
 </section>
 
 <section class="how">
   <div class="inner">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">Cómo funciona</span>
-      <h2>Tres pasos, ningún Excel</h2>
+      <h2 class="on-paper">Tres pasos, ningún Excel</h2>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal reveal-2">
         <div class="step-num">1</div>
         <h3>Sube el ticket o la factura</h3>
         <p>Una foto, un PDF o un pantallazo — lo que tengas a mano. Nada de escribir importes uno a uno.</p>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-3">
         <div class="step-num">2</div>
         <h3>La app lo lee sola</h3>
         <p>Importe, fecha y tienda, extraídos automáticamente. Tú solo confirmas si es compartido o personal.</p>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-4">
         <div class="step-num">3</div>
         <h3>Se reparte justo</h3>
         <p>Según el ingreso de cada uno, no al 50/50. Y ves quién le debe a quién, siempre al día.</p>
@@ -282,25 +359,21 @@
   </div>
 </section>
 
-<section class="fair">
+<section class="fair grain">
   <div class="inner">
-    <div>
-      <span class="eyebrow" style="color:#eda06f;">La diferencia real</span>
-      <h2>¿Por qué el 50/50 no es justo?</h2>
-      <p>
-        Si una persona gana el doble que la otra, repartir los gastos a partes iguales
-        deja a quien gana menos con mucho menos margen a fin de mes. Esta app reparte
-        según el ingreso real de cada quien — así el esfuerzo es el mismo para las dos.
-      </p>
+    <div class="reveal">
+      <span class="eyebrow">La diferencia real</span>
+      <h2>¿Por qué el<br>50/50 no es justo?</h2>
+      <p class="lede">Si una persona gana el doble que la otra, repartir los gastos a partes iguales deja a quien gana menos con mucho menos margen a fin de mes. Aquí se reparte según el ingreso real de cada quien.</p>
     </div>
-    <div class="fair-compare">
+    <div class="fair-compare reveal reveal-2">
       <div class="fair-row is-bad">
         <div class="fair-icon">½</div>
         <div class="fair-text"><strong>Otras apps: 50/50</strong><span>Da igual quién gane más — pagáis lo mismo.</span></div>
       </div>
       <div class="fair-row is-good">
         <div class="fair-icon">
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="fair-text"><strong>Gastos de la casa: proporcional</strong><span>Cada quien aporta según lo que gana. Mismo esfuerzo, no misma cifra.</span></div>
       </div>
@@ -308,59 +381,75 @@
   </div>
 </section>
 
-<section class="trust">
+<section class="lineup grain">
   <div class="inner">
-    <div class="section-head">
-      <span class="eyebrow">Privacidad</span>
-      <h2>Es vuestra. Solo vuestra.</h2>
+    <div class="section-head reveal">
+      <span class="eyebrow">Todo lo que hace por vosotros</span>
+      <h2>La alineación completa</h2>
     </div>
-    <div class="trust-grid">
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h3>Copia privada</h3>
-        <p>Tu propia instalación, con tu propia base de datos. Nadie más tiene acceso, ni siquiera nosotros.</p>
+    <div class="lineup-grid">
+      <div class="feat-card feat-1 reveal">
+        <span class="feat-num">01</span>
+        <div><p class="feat-name">Lectura Automática</p><p class="feat-desc">Sube el ticket, la app saca importe, fecha y tienda sola.</p></div>
       </div>
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h3>Sin suscripción a terceros</h3>
-        <p>Se aloja en cuentas gratuitas tuyas — no dependes de que sigamos existiendo para seguir usándola.</p>
+      <div class="feat-card feat-2 reveal reveal-2">
+        <span class="feat-num">02</span>
+        <div><p class="feat-name">Reparto Justo</p><p class="feat-desc">Proporcional al ingreso de cada quien, no al 50/50.</p></div>
       </div>
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l5-5M4 12l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Te llevas tus datos</h3>
-        <p>Puedes exportar o borrar todo cuando quieras. Es tu información, en tu base de datos.</p>
+      <div class="feat-card feat-3 reveal reveal-3">
+        <span class="feat-num">03</span>
+        <div><p class="feat-name">Saldo al Día</p><p class="feat-desc">Siempre visible quién le debe a quién.</p></div>
+      </div>
+      <div class="feat-card feat-4 reveal reveal-4">
+        <span class="feat-num">04</span>
+        <div><p class="feat-name">Copia Privada</p><p class="feat-desc">Vuestra base de datos. Nadie más tiene acceso.</p></div>
+      </div>
+    </div>
+    <div class="lineup-grid second">
+      <div class="feat-card feat-5 reveal">
+        <span class="feat-num">05</span>
+        <div><p class="feat-name">Objetivos Compartidos</p><p class="feat-desc">Marcad una meta y ved el progreso juntos.</p></div>
+      </div>
+      <div class="feat-card feat-6 reveal reveal-2">
+        <span class="feat-num">06</span>
+        <div><p class="feat-name">Sin Mensualidades</p><p class="feat-desc">Pago único. Tuya para siempre.</p></div>
+      </div>
+      <div class="feat-card feat-7 reveal reveal-3">
+        <span class="feat-num">07</span>
+        <div><p class="feat-name">Guía Sin Código</p><p class="feat-desc">Paso a paso con capturas reales.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pricing" id="precio">
-  <div class="section-head">
-    <span class="eyebrow">Precio</span>
-    <h2>Una vez. Tuya para siempre.</h2>
-  </div>
-  <div class="price-card">
-    <div class="price-figure">
-      <span class="amount">24 €</span>
+<section class="bundle" id="precio">
+  <span class="eyebrow">Precio</span>
+  <h2 style="margin-top:8px;">Una vez.<br>Tuya para siempre.</h2>
+  <div class="ticket reveal reveal-2">
+    <div class="ticket-body">
+      <div class="ticket-head"><span class="tname">GASTOS DE LA CASA</span></div>
+      <div class="ticket-price">
+        <div class="amount">24€</div>
+        <div class="period">Pago único</div>
+      </div>
+      <ul class="ticket-list">
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu copia privada de la app</li>
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Guía visual paso a paso</li>
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sin límite de uso, sin coste recurrente</li>
+      </ul>
+      <a class="btn btn-accent" href="#">Comprar ahora →</a>
+      <div class="ticket-note">( enlace de pago pendiente de configurar )</div>
     </div>
-    <div class="price-note">Pago único, sin mensualidades a nosotros.</div>
-    <ul class="price-list">
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu copia privada de la app</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Guía visual paso a paso para ponerla en marcha</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sin límite de uso, sin coste recurrente para nosotros</li>
-    </ul>
-    <a class="btn btn-primary" href="#" style="justify-content:center;">Comprar ahora →</a>
-    <div class="price-note">( enlace de pago pendiente de configurar )</div>
   </div>
 </section>
 
 <section class="faq">
   <div class="narrow">
-    <div class="section-head" style="margin-bottom:24px;">
+    <div class="section-head reveal" style="margin-bottom:24px;">
       <span class="eyebrow">Preguntas frecuentes</span>
-      <h2>Antes de decidir</h2>
+      <h2 class="on-paper">Antes de decidir</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list reveal reveal-2">
       <details class="faq-item">
         <summary class="faq-q">¿Necesito saber programar?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
         <p class="faq-a">No. Solo hace falta crear dos cuentas gratuitas siguiendo una guía visual paso a paso — sin tocar código.</p>
@@ -375,16 +464,31 @@
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Incluye soporte si me atasco configurándola?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">No incluye soporte técnico personalizado. A cambio, la guía paso a paso trae capturas de cada pantalla real y una sección de dudas frecuentes con los tropiezos más comunes ya resueltos — pensada para que no lo necesites.</p>
+        <p class="faq-a">No incluye soporte técnico personalizado. A cambio, la guía trae capturas de cada pantalla real y dudas frecuentes ya resueltas.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Sirve si vivimos más de dos personas?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">Ahora mismo está pensada para dos personas. Una versión para más personas (o para una sola) está en camino.</p>
+        <p class="faq-a">Ahora mismo está pensada para dos personas. Una versión para más personas está en camino.</p>
       </details>
     </div>
   </div>
 </section>
 
-<div class="draft-footer">
-  Borrador para revisar — falta: enlace de pago real, y decidir si el nombre "Gastos de la casa" es el definitivo.
-</div>
+<section class="final-cta grain">
+  <div class="narrow reveal">
+    <h2>Dejad de discutir<br>por quién paga qué.</h2>
+    <p class="lede">Subid el primer ticket hoy mismo y ved el reparto justo en segundos.</p>
+    <a class="btn btn-accent" href="#precio">Consíguela ahora →</a>
+  </div>
+</section>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+  }, { threshold: 0.15 });
+  els.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
