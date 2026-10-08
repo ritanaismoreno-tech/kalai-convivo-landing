@@ -9,25 +9,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0c0a08;
-    --black-2: #171310;
-    --black-3: #201a14;
-    --line-black: #332a20;
-    --paper: #f3ead8;
-    --paper-2: #ece0c8;
-    --ink: #1c150d;
-    --ink-muted: #6b5c48;
-    --line-paper: #dccaa4;
-    --accent: #c1592c;
-    --accent-deep: #9c4823;
-    --accent-2: #ffb23e;
-    --on-black: #f3ead8;
-    --on-black-muted: #a8967d;
+    --black: #1b1b19;
+    --black-2: #252523;
+    --black-3: #31312f;
+    --line-black: #44443f;
+    --paper: #f8f6f3;
+    --paper-2: #efece7;
+    --ink: #31312f;
+    --ink-muted: #75736e;
+    --line-paper: #e0dcd5;
+    --accent: #f8f6f3;
+    --accent-deep: #31312f;
+    --accent-2: #bdb9b1;
+    --on-black: #f8f6f3;
+    --on-black-muted: #a8a59f;
     --ok: #3fbf6a;
-    --tu: #ff8a4f; --tu-track: #4a3423;
+    --tu: #ff8a4f; --tu-track: #44443f;
     --neysa: #5b9bdd; --neysa-track: #24374a;
     --shadow-deep: 0 30px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.45);
-    --glow: 0 0 140px rgba(193,89,44,0.22);
+    --glow: 0 0 140px rgba(248,246,243,0.22);
     --display: "Bebas Neue", "Oswald", Impact, sans-serif;
     --body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
@@ -66,8 +66,8 @@
     padding: 17px 30px; border-radius: 999px; border: none; cursor: pointer; text-decoration: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .btn-accent { background: var(--accent); color: var(--ink); box-shadow: 0 10px 30px rgba(193,89,44,0.35); }
-  .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(193,89,44,0.45); }
+  .btn-accent { background: var(--accent); color: var(--ink); box-shadow: 0 10px 30px rgba(248,246,243,0.35); }
+  .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(248,246,243,0.45); }
   .btn:active { transform: translateY(0px); }
   .price-note { font-size: 13px; color: var(--on-black-muted); font-weight: 600; letter-spacing: 0.02em; }
   .price-note.on-paper { color: var(--ink-muted); }
@@ -89,7 +89,7 @@
   .hero {
     min-height: 96vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 120px 24px 80px; background:
-      radial-gradient(ellipse 900px 500px at 50% 18%, rgba(193,89,44,0.16), transparent 65%), var(--black);
+      radial-gradient(ellipse 900px 500px at 50% 18%, rgba(248,246,243,0.16), transparent 65%), var(--black);
   }
   .hero .eyebrow { margin-bottom: 22px; }
   .hero h1 { max-width: 15ch; }
@@ -98,7 +98,7 @@
 
   /* giant scoreboard-style receipt visual */
   .hero-visual { margin-top: 72px; position: relative; width: min(560px, 92vw); }
-  .hero-visual-glow { position: absolute; inset: -80px; background: radial-gradient(circle, rgba(193,89,44,0.28), transparent 70%); filter: blur(6px); z-index: 0; }
+  .hero-visual-glow { position: absolute; inset: -80px; background: radial-gradient(circle, rgba(248,246,243,0.28), transparent 70%); filter: blur(6px); z-index: 0; }
   .receipt {
     position: relative; z-index: 1; background: var(--paper); color: var(--ink); border-radius: 6px;
     padding: 30px 30px 24px; box-shadow: var(--shadow-deep); transform: rotate(-2.2deg);
@@ -130,7 +130,7 @@
   .seal-badge { width: 264px; height: 264px; margin: 0 auto 34px; position: relative; }
   .seal-ring-outer { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent)); padding: 6px; }
   .seal-ring-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--black-2); display: flex; align-items: center; justify-content: center; }
-  .seal-core { width: 78%; height: 78%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--black-3), var(--black)); border: 1.5px dashed rgba(255,178,62,0.4); display: flex; align-items: center; justify-content: center; position: relative; }
+  .seal-core { width: 78%; height: 78%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--black-3), var(--black)); border: 1.5px dashed rgba(189,185,177,0.4); display: flex; align-items: center; justify-content: center; position: relative; }
   .seal-core svg.check { width: 46px; height: 46px; color: var(--accent-2); }
   .seal h2 { margin-bottom: 18px; }
   .seal .lede { margin: 0 auto; }
@@ -169,7 +169,7 @@
   .fair-row { display: flex; align-items: center; gap: 18px; padding: 22px 24px; border-radius: 4px; border: 1.5px solid var(--line-black); }
   .fair-row.is-bad { opacity: 0.55; }
   .fair-row.is-bad .fair-icon { font-family: var(--display); font-size: 26px; color: var(--on-black-muted); }
-  .fair-row.is-good { border-color: var(--accent); background: rgba(193,89,44,0.06); }
+  .fair-row.is-good { border-color: var(--accent); background: rgba(248,246,243,0.06); }
   .fair-icon { width: 34px; flex-shrink: 0; text-align: center; }
   .fair-row.is-good .fair-icon svg { width: 22px; height: 22px; color: var(--accent-2); }
   .fair-text strong { display: block; font-family: var(--display); font-size: 19px; letter-spacing: 0.02em; color: var(--on-black); text-transform: uppercase; }
@@ -186,14 +186,14 @@
   .feat-card .feat-num { font-family: var(--display); font-size: 15px; opacity: 0.55; }
   .feat-card .feat-name { font-family: var(--display); font-size: 24px; line-height: 0.95; text-transform: uppercase; }
   .feat-card .feat-desc { font-family: var(--body); font-size: 12px; font-weight: 600; opacity: 0.82; margin-top: 6px; }
-  .feat-1 { background: linear-gradient(155deg, #ffb23e, #c1592c); }
-  .feat-2 { background: linear-gradient(155deg, #f3ead8, #dccaa4); }
-  .feat-3 { background: linear-gradient(155deg, #5b9bdd, #2a5f9e); color: var(--on-black); }
-  .feat-4 { background: linear-gradient(155deg, #ff8a4f, #9c4823); }
+  .feat-1 { background: linear-gradient(155deg, #f8f6f3, #d6d1c8); }
+  .feat-2 { background: linear-gradient(155deg, #efece7, #e0dcd5); }
+  .feat-3 { background: linear-gradient(155deg, #55554f, #31312f); color: var(--on-black); }
+  .feat-4 { background: linear-gradient(155deg, #bdb9b1, #8c8880); }
   .lineup-grid.second { margin-top: 14px; grid-template-columns: repeat(3, 1fr); }
-  .feat-5 { background: linear-gradient(155deg, #3fbf6a, #1f7a3f); color: var(--on-black); }
-  .feat-6 { background: linear-gradient(155deg, #201a14, #0c0a08); color: var(--on-black); border: 1.5px solid var(--line-black); }
-  .feat-7 { background: linear-gradient(155deg, #ffdf9e, #ffb23e); }
+  .feat-5 { background: linear-gradient(155deg, #75736e, #44443f); color: var(--on-black); }
+  .feat-6 { background: linear-gradient(155deg, #31312f, #1b1b19); color: var(--on-black); border: 1.5px solid var(--line-black); }
+  .feat-7 { background: linear-gradient(155deg, #f8f6f3, #bdb9b1); }
 
   /* ============ RECEIPT PRICING ============ */
   .bundle { padding: 130px 24px 140px; background: var(--black-2); text-align: center; }
