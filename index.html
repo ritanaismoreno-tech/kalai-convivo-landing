@@ -236,6 +236,31 @@
   .final-cta h2 { margin-bottom: 20px; }
   .final-cta .lede { margin: 0 auto 36px; }
 
+  /* ============ DEMO GRATUITA (formulario de Hotmart Send) ============ */
+  .demo { padding: 110px 24px; background: var(--black-2); }
+  .demo .inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  .demo .lede { margin-top: 18px; }
+  .demo-list { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 10px; color: var(--on-black); font-weight: 600; }
+  .demo-list li::before { content: "✓"; color: var(--accent-2); font-weight: 800; margin-right: 10px; }
+  .demo-card { background: var(--paper); color: var(--ink); border-radius: 18px; padding: 32px 28px; box-shadow: var(--shadow-deep); }
+  .demo-card h3 { color: var(--ink); font-size: 30px; margin-bottom: 18px; }
+  .demo-card form { display: flex; flex-direction: column; gap: 12px; margin: 0; }
+  .demo-card input[type="email"], .demo-card input[type="text"] {
+    width: 100%; font-family: var(--body); font-size: 16px; padding: 14px 16px; border-radius: 12px;
+    border: 1.5px solid var(--line-paper); background: #fff; color: var(--ink);
+  }
+  .demo-card input[type="email"]:focus, .demo-card input[type="text"]:focus { outline: none; border-color: var(--ink); }
+  .demo-card label { font-size: 14px; color: var(--ink); margin-left: 8px; }
+  .demo-card input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--ink); flex-shrink: 0; }
+  .demo-card [klicksend-gdpr-text] a { color: var(--ink-muted); word-break: break-all; }
+  .demo-card button {
+    margin-top: 6px; font-family: var(--body); font-weight: 800; font-size: 14.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 17px 30px; border-radius: 999px; border: none; cursor: pointer;
+    background: var(--ink); color: var(--paper);
+  }
+  .demo-card button:hover { background: var(--black-3); }
+  .hero-demo-link { font-size: 14px; font-weight: 700; color: var(--on-black); text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 900px) { .demo .inner { grid-template-columns: 1fr; gap: 36px; } .demo { padding: 80px 20px; } .demo-card { padding: 26px 20px; } }
   @media (max-width: 900px) {
     .lineup-grid { grid-template-columns: repeat(2, 1fr); }
     .lineup-grid.second { grid-template-columns: repeat(2, 1fr); }
@@ -260,6 +285,7 @@
   <div class="hero-cta-row reveal reveal-3">
     <a class="btn btn-accent" href="#precio">Consíguela ahora →</a>
     <span class="price-note">Pago único · 24 €</span>
+    <a class="hero-demo-link" href="#demo">o pruébala gratis →</a>
   </div>
 
   <div class="hero-visual reveal reveal-4">
@@ -291,6 +317,44 @@
     <span>SUBE EL TICKET</span><span>·</span><span>REPARTO PROPORCIONAL</span><span>·</span><span>SIN EXCEL</span><span>·</span><span>SALDO SIEMPRE AL DÍA</span><span>·</span>
   </div>
 </div>
+
+<section class="demo grain" id="demo">
+  <div class="inner">
+    <div class="reveal">
+      <span class="eyebrow">Demo gratuita</span>
+      <h2>Pruébala antes de comprarla</h2>
+      <p class="lede">Entra en la app de verdad con un hogar de ejemplo y toca lo que quieras. Te enviamos el acceso a tu correo.</p>
+      <ul class="demo-list">
+        <li>Mira cómo se reparte cada gasto según lo que gana cada uno</li>
+        <li>Clasifica un ticket y ve quién debe a quién al momento</li>
+        <li>Crea un objetivo de ahorro compartido</li>
+      </ul>
+    </div>
+    <div class="demo-card reveal reveal-2">
+      <h3>Pide tu acceso</h3>
+      <!-- Formulario de Hotmart Send, pegado tal cual lo genera Hotmart. -->
+      <style></style><script src="//send.hotmart.com/static/js/recaptcha.min.js"></script>
+  <form klicksend-form-id='ARu8RQn' autocomplete='off'  method="post" action="//handler.send.hotmart.com/subscription/ARu8RQn?hotfeature=53">
+      <input type="email" autocomplete="off" name="email" id="email" placeholder="Email" value="" required>
+  <input type="text" autocomplete="off" name="first_name" id="first_name" placeholder="Nombre" value="" >
+<div klicksend-gdpr-text style="font-size: 10px; color: #86919a; margin-bottom: 5px; text-align: left;"><p> Usaremos tu correo para enviarte el acceso a la demo de Convivo y otros contenidos y ofertas de Kalai. Puedes darte de baja cuando quieras con el enlace que aparece al final de cada correo. </p><p> Para más informaciones, ve a:<a href="https://kalai.com.es/politica-privacidad" target="_blank" rel="noopener">https://kalai.com.es/politica-privacidad</a> </p> </div><div style='width: 100%; display: flex'>  <input type="checkbox" autocomplete="off" name="gdpr" id="gdpr" placeholder="Acepto recibir los emails" value="Acepto recibir los emails" required> <label for="gdpr"> Acepto recibir los emails </label></div>
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+    <input type="text" autocomplete='new-password' name="b_ARu8RQn" tabindex="-1" value="">
+  </div>
+    <button klicksend-form-submit-id='ARu8RQn' class="g-recaptcha">Enviar</button>
+    <script>
+    var pageParams = new URLSearchParams(window.location.search);
+    var form = document.querySelector('form[klicksend-form-id="ARu8RQn"]');
+    var formActionUrl = new URL(form.action);
+    var formActionSearchParams = formActionUrl.searchParams.size > 0 ? formActionUrl.searchParams.toString() + '&' : '';
+    var combinedParams = formActionSearchParams + pageParams.toString();
+
+    form.action = formActionUrl.origin + formActionUrl.pathname + '?' + combinedParams;
+  </script>
+  </form>
+    </div>
+  </div>
+</section>
 
 <section class="seal grain">
   <div class="inner reveal">
