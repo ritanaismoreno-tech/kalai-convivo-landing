@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kalai Convivo</title>
+<title>Kalai Convivo — reparte los gastos de casa según lo que gana cada uno</title>
+<meta name="description" content="Sube la foto del ticket y Convivo calcula lo que le toca pagar a cada uno según lo que gana, no al 50/50. Pago único de 24 €. Pruébala gratis 2 días.">
+<meta name="theme-color" content="#1b1b19">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://convivo.kalai.com.es/">
+<meta property="og:title" content="Kalai Convivo — reparte cada gasto, justo, no igual">
+<meta property="og:description" content="La app que reparte los gastos de casa según lo que gana cada uno. Pago único de 24 €. Pruébala gratis 2 días.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -125,18 +134,6 @@
   .ticker span { font-family: var(--display); font-size: 20px; letter-spacing: 0.04em; color: var(--ink); padding: 0 28px; white-space: nowrap; }
   @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* ============ SEAL ============ */
-  .seal { padding: 128px 24px 120px; text-align: center; background: var(--black-2); }
-  .seal-badge { width: 264px; height: 264px; margin: 0 auto 34px; position: relative; }
-  .seal-ring-outer { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent)); padding: 6px; }
-  .seal-ring-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--black-2); display: flex; align-items: center; justify-content: center; }
-  .seal-core { width: 78%; height: 78%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--black-3), var(--black)); border: 1.5px dashed rgba(189,185,177,0.4); display: flex; align-items: center; justify-content: center; position: relative; }
-  .seal-core svg.check { width: 46px; height: 46px; color: var(--accent-2); }
-  .seal h2 { margin-bottom: 18px; }
-  .seal .lede { margin: 0 auto; }
-  .seal-tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
-  .seal-tag { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--accent); color: var(--accent-2); }
-
   /* ============ SCOREBOARD ============ */
   .scoreboard { padding: 110px 24px; background: var(--black); text-align: center; }
   .scoreboard .eyebrow { display: block; margin-bottom: 8px; }
@@ -162,7 +159,7 @@
   .step p { font-size: 14.5px; color: var(--ink-muted); }
 
   /* ============ FAIR COMPARE ============ */
-  .fair { padding: 120px 24px; background: var(--black); }
+  .fair { padding: 120px 24px; background: var(--black-2); }
   .fair .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
   .fair .lede { margin-top: 20px; }
   .fair-compare { display: flex; flex-direction: column; gap: 16px; }
@@ -174,26 +171,6 @@
   .fair-row.is-good .fair-icon svg { width: 22px; height: 22px; color: var(--accent-2); }
   .fair-text strong { display: block; font-family: var(--display); font-size: 19px; letter-spacing: 0.02em; color: var(--on-black); text-transform: uppercase; }
   .fair-text span { font-size: 13px; color: var(--on-black-muted); }
-
-  /* ============ LINEUP ============ */
-  .lineup { padding: 120px 24px; background: var(--black); }
-  .lineup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .feat-card {
-    position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 3/4;
-    display: flex; flex-direction: column; justify-content: space-between; padding: 20px;
-    color: var(--ink);
-  }
-  .feat-card .feat-num { font-family: var(--display); font-size: 15px; opacity: 0.55; }
-  .feat-card .feat-name { font-family: var(--display); font-size: 24px; line-height: 0.95; text-transform: uppercase; }
-  .feat-card .feat-desc { font-family: var(--body); font-size: 12px; font-weight: 600; opacity: 0.82; margin-top: 6px; }
-  .feat-1 { background: linear-gradient(155deg, #f8f6f3, #d6d1c8); }
-  .feat-2 { background: linear-gradient(155deg, #efece7, #e0dcd5); }
-  .feat-3 { background: linear-gradient(155deg, #55554f, #31312f); color: var(--on-black); }
-  .feat-4 { background: linear-gradient(155deg, #bdb9b1, #8c8880); }
-  .lineup-grid.second { margin-top: 14px; grid-template-columns: repeat(3, 1fr); }
-  .feat-5 { background: linear-gradient(155deg, #75736e, #44443f); color: var(--on-black); }
-  .feat-6 { background: linear-gradient(155deg, #31312f, #1b1b19); color: var(--on-black); border: 1.5px solid var(--line-black); }
-  .feat-7 { background: linear-gradient(155deg, #f8f6f3, #bdb9b1); }
 
   /* ============ RECEIPT PRICING ============ */
   .bundle { padding: 130px 24px 140px; background: var(--black-2); text-align: center; }
@@ -219,6 +196,9 @@
   .ticket-list li { display: flex; gap: 10px; font-size: 14px; font-weight: 600; color: var(--ink); align-items: flex-start; }
   .ticket-list svg { width: 15px; height: 15px; color: var(--accent-deep); flex-shrink: 0; margin-top: 3px; }
   .ticket .btn { width: 100%; justify-content: center; margin-top: 24px; }
+  .btn-dark { background: var(--ink); color: var(--paper); box-shadow: 0 10px 26px rgba(0,0,0,0.25); }
+  .btn-dark:hover { transform: translateY(-2px); background: var(--black-3); }
+  .ticket-alt { display: block; text-align: center; margin-top: 16px; font-size: 13.5px; font-weight: 700; color: var(--ink); }
   .ticket-note { text-align: center; font-size: 12px; color: var(--ink-muted); margin-top: 14px; }
 
   /* ============ FAQ (paper) ============ */
@@ -235,6 +215,61 @@
   .final-cta { padding: 130px 24px 150px; text-align: center; background: var(--black); }
   .final-cta h2 { margin-bottom: 20px; }
   .final-cta .lede { margin: 0 auto 36px; }
+
+  /* ============ TOPBAR ============ */
+  .topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; max-width: 1180px; margin: 0 auto; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--on-black); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.28em; }
+  .brand svg { height: 24px; width: auto; }
+  .brand .sub { color: var(--on-black-muted); letter-spacing: 0.12em; font-weight: 500; }
+  .topbar-links { display: flex; align-items: center; gap: 18px; font-size: 13.5px; font-weight: 700; }
+  .topbar-links a { color: var(--on-black-muted); text-decoration: none; }
+  .topbar-links a:hover { color: var(--on-black); }
+  .topbar-links .pill { color: var(--ink); background: var(--accent); padding: 9px 16px; border-radius: 999px; }
+  .topbar-links .pill:hover { color: var(--ink); }
+
+  /* ============ HISTORIA (paper) ============ */
+  .story { padding: 120px 24px; background: var(--paper); color: var(--ink); }
+  .story .inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; }
+  .story blockquote { margin: 0; font-size: 19px; line-height: 1.65; color: var(--ink); }
+  .story blockquote p + p { margin-top: 18px; }
+  .story-sign { margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--ink-muted); letter-spacing: 0.04em; }
+
+  /* ============ FEATURES (paper) ============ */
+  .features { padding: 120px 24px; background: var(--paper-2); color: var(--ink); }
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feat { background: var(--paper); border: 1.5px solid var(--line-paper); border-radius: 16px; padding: 28px 26px; }
+  .feat svg { width: 30px; height: 30px; color: var(--ink); }
+  .feat h3 { font-family: var(--body); text-transform: none; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; margin: 18px 0 8px; color: var(--ink); }
+  .feat p { font-size: 14.5px; color: var(--ink-muted); }
+
+  /* ============ CTA DOBLE + FOOTER + BARRA MÓVIL ============ */
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-ghost { background: transparent; color: var(--on-black); border: 1.5px solid var(--line-black); }
+  .btn-ghost:hover { border-color: var(--on-black); transform: translateY(-2px); }
+  .site-footer { background: var(--black); border-top: 1px solid var(--line-black); padding: 34px 24px; color: var(--on-black-muted); font-size: 13.5px; }
+  .site-footer .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .site-footer nav { display: flex; gap: 8px 18px; flex-wrap: wrap; }
+  .site-footer a { color: var(--on-black-muted); text-decoration: none; }
+  .site-footer a:hover { color: var(--on-black); }
+  .faq-a a { color: var(--ink); font-weight: 700; }
+  .mobile-cta { display: none; }
+  @media (max-width: 760px) {
+    .topbar { padding: 16px 18px; }
+    .topbar-links a:not(.pill) { display: none; }
+    .story .inner, .feat-grid { grid-template-columns: 1fr; gap: 28px; }
+    .story, .features { padding: 84px 20px; }
+    .story blockquote { font-size: 17px; }
+    .mobile-cta {
+      display: flex; gap: 10px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50;
+      padding: 10px; border-radius: 999px; background: rgba(27,27,25,0.92); backdrop-filter: blur(8px);
+      border: 1px solid var(--line-black); transform: translateY(140%); transition: transform 0.25s ease;
+    }
+    .mobile-cta.is-on { transform: translateY(0); }
+    .mobile-cta a { flex: 1; text-align: center; padding: 12px 10px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; }
+    .mobile-cta .m-demo { color: var(--on-black); border: 1px solid var(--line-black); }
+    .mobile-cta .m-buy { color: var(--ink); background: var(--accent); }
+    .site-footer { padding-bottom: 96px; }
+  }
 
   /* ============ DEMO GRATUITA (formulario de Hotmart Send) ============ */
   .demo { padding: 110px 24px; background: var(--black-2); }
@@ -262,13 +297,14 @@
   .hero-demo-link { font-size: 14px; font-weight: 700; color: var(--on-black); text-decoration: underline; text-underline-offset: 4px; }
   @media (max-width: 900px) { .demo .inner { grid-template-columns: 1fr; gap: 36px; } .demo { padding: 80px 20px; } .demo-card { padding: 26px 20px; } }
   @media (max-width: 900px) {
-    .lineup-grid { grid-template-columns: repeat(2, 1fr); }
-    .lineup-grid.second { grid-template-columns: repeat(2, 1fr); }
     .score-panel { gap: 24px; }
+    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+    .story .inner { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 760px) {
     .steps { grid-template-columns: 1fr; }
     .fair .inner { grid-template-columns: 1fr; }
+    .feat-grid { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     .reveal { transition: none !important; opacity: 1; transform: none; }
@@ -279,6 +315,15 @@
 <body>
 
 <section class="hero grain">
+<header class="topbar">
+  <a class="brand" href="https://kalai.com.es" aria-label="Kalai — ir a kalai.com.es"><svg viewBox="0 0 128 150" fill="none" aria-hidden="true"><clipPath id="km1"><rect x="0" y="1" width="128" height="148"/></clipPath><g clip-path="url(#km1)" stroke="currentColor" stroke-width="9" stroke-miterlimit="10"><path d="M10 -10 L10 112 L134 -10"/><path d="M-6 155 L61 88 L128 155"/><path d="M62 115 L102 155"/></g></svg>kalai <span class="sub">· convivo</span></a>
+  <nav class="topbar-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#demo">Probar gratis</a>
+    <a class="pill" href="#precio">24 € · Comprar</a>
+  </nav>
+</header>
+
   <div class="eyebrow reveal">Kalai Convivo</div>
   <h1 class="reveal reveal-2">Reparte cada gasto,<br><span class="hl">justo</span> no igual.</h1>
   <p class="lede reveal reveal-3">Sube la foto del ticket. La app lee el importe, la fecha y la tienda sola — y calcula lo que le toca pagar a cada quien, según lo que gana.</p>
@@ -318,6 +363,89 @@
   </div>
 </div>
 
+<section class="how" id="como-funciona">
+  <div class="inner">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2 class="on-paper">Tres pasos, ningún Excel</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal reveal-2">
+        <div class="step-num">1</div>
+        <h3>Sube el ticket o el extracto</h3>
+        <p>Una foto, un PDF o un pantallazo — o el extracto del banco entero. Nada de escribir importes uno a uno.</p>
+      </div>
+      <div class="step reveal reveal-3">
+        <div class="step-num">2</div>
+        <h3>La app lo lee sola</h3>
+        <p>Importe, fecha y tienda, extraídos automáticamente. Tú solo confirmas si es compartido o personal.</p>
+      </div>
+      <div class="step reveal reveal-4">
+        <div class="step-num">3</div>
+        <h3>Se reparte justo</h3>
+        <p>Según el ingreso de cada uno, no al 50/50. Y ves quién le debe a quién, siempre al día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scoreboard grain">
+  <div class="inner reveal">
+    <span class="eyebrow">El reparto, en vivo</span>
+    <h2>Nadie paga a ciegas</h2>
+    <div class="score-panel">
+      <div class="score-side">
+        <span class="score-name">Marta</span>
+        <span class="score-pct tu">62%</span>
+      </div>
+      <span class="score-vs">/</span>
+      <div class="score-side">
+        <span class="score-name">Diego</span>
+        <span class="score-pct neysa">38%</span>
+      </div>
+    </div>
+    <p class="score-debt">Diego le debe a Marta <strong>84,20 €</strong> — actualizado con cada ticket.</p>
+  </div>
+</section>
+
+<section class="fair grain">
+  <div class="inner">
+    <div class="reveal">
+      <span class="eyebrow">La diferencia real</span>
+      <h2>¿Por qué el<br>50/50 no es justo?</h2>
+      <p class="lede">Si una persona gana el doble que la otra, repartir los gastos a partes iguales deja a quien gana menos con mucho menos margen a fin de mes. Aquí se reparte según el ingreso real de cada quien.</p>
+    </div>
+    <div class="fair-compare reveal reveal-2">
+      <div class="fair-row is-bad">
+        <div class="fair-icon">½</div>
+        <div class="fair-text"><strong>El 50/50 de siempre</strong><span>Da igual quién gane más — pagáis lo mismo.</span></div>
+      </div>
+      <div class="fair-row is-good">
+        <div class="fair-icon">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="fair-text"><strong>Kalai Convivo: proporcional</strong><span>Cada quien aporta según lo que gana. Mismo esfuerzo, no misma cifra.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--ink-muted)">Por qué existe Convivo</span>
+      <h2 class="on-paper" style="margin-top:10px;">Nació en<br>nuestra casa</h2>
+    </div>
+    <div class="reveal reveal-2">
+      <blockquote>
+        <p>Mi pareja y yo tenemos sueldos distintos y, aun así, pagábamos la casa a medias. Cuando a ella le redujeron el sueldo, nos dimos cuenta de que no era justo: yo no quería pagarlo todo, pero tampoco tenía sentido que ella pagara lo mismo que yo ganando menos.</p>
+        <p>Así nació Convivo: para ver juntas qué pagamos, cuánto aporta cada una según lo que gana, y ahorrar para lo que queremos hacer — un viaje, un piso, un coche.</p>
+      </blockquote>
+      <p class="story-sign">— Fundadora de Kalai</p>
+    </div>
+  </div>
+</section>
+
 <section class="demo grain" id="demo">
   <div class="inner">
     <div class="reveal">
@@ -356,131 +484,42 @@
   </div>
 </section>
 
-<section class="seal grain">
-  <div class="inner reveal">
-    <div class="seal-badge">
-      <div class="seal-ring-outer">
-        <div class="seal-ring-inner">
-          <div class="seal-core">
-            <svg class="check" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span class="eyebrow">Privacidad</span>
-    <h2>Es vuestra.<br>Solo vuestra.</h2>
-    <p class="lede" style="margin-top:18px;">Tu propia copia, con tu propia base de datos — separada de la de cualquier otra casa. Solo tu app accede a tus datos para mostrártelos, igual que en cualquier otro servicio online que uses. Exportas o borras todo cuando quieras.</p>
-    <div class="seal-tags">
-      <span class="seal-tag">Copia privada</span>
-      <span class="seal-tag">Sin terceros</span>
-      <span class="seal-tag">Tus datos, tuyos</span>
-    </div>
-  </div>
-</section>
-
-<section class="scoreboard grain">
-  <div class="inner reveal">
-    <span class="eyebrow">El reparto, en vivo</span>
-    <h2>Nadie paga a ciegas</h2>
-    <div class="score-panel">
-      <div class="score-side">
-        <span class="score-name">Marta</span>
-        <span class="score-pct tu">62%</span>
-      </div>
-      <span class="score-vs">/</span>
-      <div class="score-side">
-        <span class="score-name">Diego</span>
-        <span class="score-pct neysa">38%</span>
-      </div>
-    </div>
-    <p class="score-debt">Diego le debe a Marta <strong>84,20 €</strong> — actualizado con cada ticket.</p>
-  </div>
-</section>
-
-<section class="how">
+<section class="features">
   <div class="inner">
     <div class="section-head reveal">
-      <span class="eyebrow">Cómo funciona</span>
-      <h2 class="on-paper">Tres pasos, ningún Excel</h2>
+      <span class="eyebrow" style="color:var(--ink-muted)">Todo lo que hace por vosotros</span>
+      <h2 class="on-paper">Menos cuentas, más casa</h2>
     </div>
-    <div class="steps">
-      <div class="step reveal reveal-2">
-        <div class="step-num">1</div>
-        <h3>Sube el ticket o la factura</h3>
-        <p>Una foto, un PDF o un pantallazo — lo que tengas a mano. Nada de escribir importes uno a uno.</p>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>
+        <h3>Lectura automática</h3>
+        <p>Sube la foto del ticket o el extracto del banco y la app saca el importe, la fecha y la tienda sola.</p>
       </div>
-      <div class="step reveal reveal-3">
-        <div class="step-num">2</div>
-        <h3>La app lo lee sola</h3>
-        <p>Importe, fecha y tienda, extraídos automáticamente. Tú solo confirmas si es compartido o personal.</p>
+      <div class="feat reveal reveal-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 7a4 4 0 0 0 6 0z"/><path d="M19 7l-3 7a4 4 0 0 0 6 0z"/></svg>
+        <h3>Reparto justo</h3>
+        <p>Cada gasto compartido se reparte según lo que gana cada uno, no al 50/50.</p>
       </div>
-      <div class="step reveal reveal-4">
-        <div class="step-num">3</div>
-        <h3>Se reparte justo</h3>
-        <p>Según el ingreso de cada uno, no al 50/50. Y ves quién le debe a quién, siempre al día.</p>
+      <div class="feat reveal reveal-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg>
+        <h3>Saldo siempre al día</h3>
+        <p>Siempre a la vista quién le debe a quién, y cuánto, con cada ticket nuevo.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="fair grain">
-  <div class="inner">
-    <div class="reveal">
-      <span class="eyebrow">La diferencia real</span>
-      <h2>¿Por qué el<br>50/50 no es justo?</h2>
-      <p class="lede">Si una persona gana el doble que la otra, repartir los gastos a partes iguales deja a quien gana menos con mucho menos margen a fin de mes. Aquí se reparte según el ingreso real de cada quien.</p>
-    </div>
-    <div class="fair-compare reveal reveal-2">
-      <div class="fair-row is-bad">
-        <div class="fair-icon">½</div>
-        <div class="fair-text"><strong>Otras apps: 50/50</strong><span>Da igual quién gane más — pagáis lo mismo.</span></div>
+      <div class="feat reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+        <h3>Objetivos compartidos</h3>
+        <p>Un viaje, la entrada de un piso, un coche: marcad la meta y ved cuánto aporta cada uno.</p>
       </div>
-      <div class="fair-row is-good">
-        <div class="fair-icon">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="fair-text"><strong>Kalai Convivo: proporcional</strong><span>Cada quien aporta según lo que gana. Mismo esfuerzo, no misma cifra.</span></div>
+      <div class="feat reveal reveal-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <h3>Vuestra propia copia</h3>
+        <p>Vuestros datos, en una base de datos solo vuestra. Sin publicidad ni rastreo.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="lineup grain">
-  <div class="inner">
-    <div class="section-head reveal">
-      <span class="eyebrow">Todo lo que hace por vosotros</span>
-      <h2>La alineación completa</h2>
-    </div>
-    <div class="lineup-grid">
-      <div class="feat-card feat-1 reveal">
-        <span class="feat-num">01</span>
-        <div><p class="feat-name">Lectura Automática</p><p class="feat-desc">Sube el ticket, la app saca importe, fecha y tienda sola.</p></div>
-      </div>
-      <div class="feat-card feat-2 reveal reveal-2">
-        <span class="feat-num">02</span>
-        <div><p class="feat-name">Reparto Justo</p><p class="feat-desc">Proporcional al ingreso de cada quien, no al 50/50.</p></div>
-      </div>
-      <div class="feat-card feat-3 reveal reveal-3">
-        <span class="feat-num">03</span>
-        <div><p class="feat-name">Saldo al Día</p><p class="feat-desc">Siempre visible quién le debe a quién.</p></div>
-      </div>
-      <div class="feat-card feat-4 reveal reveal-4">
-        <span class="feat-num">04</span>
-        <div><p class="feat-name">Copia Privada</p><p class="feat-desc">Vuestra propia base de datos, separada de la de cualquier otra casa.</p></div>
-      </div>
-    </div>
-    <div class="lineup-grid second">
-      <div class="feat-card feat-5 reveal">
-        <span class="feat-num">05</span>
-        <div><p class="feat-name">Objetivos Compartidos</p><p class="feat-desc">Marcad una meta y ved el progreso juntos.</p></div>
-      </div>
-      <div class="feat-card feat-6 reveal reveal-2">
-        <span class="feat-num">06</span>
-        <div><p class="feat-name">Sin Mensualidades</p><p class="feat-desc">Pago único. Tuya para siempre.</p></div>
-      </div>
-      <div class="feat-card feat-7 reveal reveal-3">
-        <span class="feat-num">07</span>
-        <div><p class="feat-name">Acceso al instante</p><p class="feat-desc">Pagas y entras — sin cuentas técnicas que crear ni nada que configurar.</p></div>
+      <div class="feat reveal reveal-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v10H3z"/><path d="M3 9l2-4h14l2 4"/><path d="M12 13v2"/></svg>
+        <h3>Pago único</h3>
+        <p>24 € una vez y es vuestra. Sin mensualidades ni sorpresas.</p>
       </div>
     </div>
   </div>
@@ -498,10 +537,11 @@
       </div>
       <ul class="ticket-list">
         <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu copia privada de la app</li>
-        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Acceso automático en segundos tras pagar</li>
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Entras al momento tras pagar</li>
         <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sin límite de uso, sin coste recurrente</li>
       </ul>
-      <a class="btn btn-accent" href="https://kalai-convivo.onrender.com/comprar">Comprar ahora →</a>
+      <a class="btn btn-dark" href="https://app.convivo.kalai.com.es/comprar">Comprar ahora →</a>
+      <a class="ticket-alt" href="#demo">¿Prefieres probarla antes? Demo gratis 2 días →</a>
     </div>
   </div>
 </section>
@@ -515,19 +555,23 @@
     <div class="faq-list reveal reveal-2">
       <details class="faq-item">
         <summary class="faq-q">¿Necesito saber programar?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">No. El acceso se activa solo, automáticamente, nada más completar el pago — no hay que crear ninguna cuenta ni configurar nada.</p>
+        <p class="faq-a">No. Pagas, entras directamente en tu app y te llega un email para crear tu contraseña. No hay nada que instalar ni configurar.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">¿Puedo probarla antes de pagar?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="faq-a">Sí. <a href="#demo">Pide la demo gratuita</a> y entra durante 2 días en la app con un hogar de ejemplo.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Qué necesito para usarla?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">Un ordenador o un móvil y un correo electrónico. Nada más — tu copia queda lista para usar en segundos.</p>
+        <p class="faq-a">Un ordenador o un móvil y un correo electrónico. Nada más.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Es privada?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">Sí. Es tu propia copia, con tu propia base de datos, separada de la de cualquier otro cliente. Solo tú accedes a ella con tu usuario y contraseña.</p>
+        <p class="faq-a">Sí. Cada casa tiene su propia base de datos, separada de la de cualquier otra, y solo entráis con vuestro usuario y contraseña. Para leer los tickets, la app envía la foto a la IA de Google (Gemini), que devuelve el importe, la fecha y la tienda.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Incluye soporte si tengo algún problema?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">Al no haber ninguna configuración que hacer, no debería haber nada en lo que atascarse. Si aun así tienes algún problema, puedes escribirnos.</p>
+        <p class="faq-a">Sí. Escríbenos a <a href="mailto:contacto@kalai.com.es">contacto@kalai.com.es</a> y te ayudamos.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Sirve si vivimos más de dos personas?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
@@ -541,9 +585,28 @@
   <div class="narrow reveal">
     <h2>Dejad de discutir<br>por quién paga qué.</h2>
     <p class="lede">Subid el primer ticket hoy mismo y ved el reparto justo en segundos.</p>
-    <a class="btn btn-accent" href="#precio">Consíguela ahora →</a>
+    <div class="cta-row">
+      <a class="btn btn-accent" href="#precio">Consíguela por 24 € →</a>
+      <a class="btn btn-ghost" href="#demo">Pruébala gratis</a>
+    </div>
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="inner">
+    <a class="brand" href="https://kalai.com.es"><svg viewBox="0 0 128 150" fill="none" aria-hidden="true"><clipPath id="km2"><rect x="0" y="1" width="128" height="148"/></clipPath><g clip-path="url(#km2)" stroke="currentColor" stroke-width="9" stroke-miterlimit="10"><path d="M10 -10 L10 112 L134 -10"/><path d="M-6 155 L61 88 L128 155"/><path d="M62 115 L102 155"/></g></svg>kalai <span class="sub">· convivo</span></a>
+    <nav>
+      <a href="mailto:contacto@kalai.com.es">contacto@kalai.com.es</a>
+      <a href="https://kalai.com.es/politica-privacidad">Política de privacidad</a>
+      <a href="https://app.convivo.kalai.com.es/login">Entrar en mi app</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mobile-cta" id="mobile-cta">
+  <a class="m-demo" href="#demo">Probar gratis</a>
+  <a class="m-buy" href="#precio">Comprar · 24 €</a>
+</div>
 
 <script>
   const els = document.querySelectorAll('.reveal');
@@ -553,5 +616,22 @@
   els.forEach(el => io.observe(el));
 </script>
 
+<script>
+  // Barra fija en móvil: aparece tras pasar el inicio y se oculta en las
+  // secciones que ya tienen su propio botón (demo y precio).
+  (function () {
+    var bar = document.getElementById('mobile-cta');
+    var hero = document.querySelector('.hero');
+    var own = [document.getElementById('demo'), document.getElementById('precio')];
+    var heroOut = false, inOwn = new Set();
+    function sync() { bar.classList.toggle('is-on', heroOut && inOwn.size === 0); }
+    new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting; sync(); }).observe(hero);
+    var o = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? inOwn.add(e.target) : inOwn.delete(e.target); });
+      sync();
+    }, { threshold: 0.2 });
+    own.forEach(function (el) { o.observe(el); });
+  })();
+</script>
 </body>
 </html>
