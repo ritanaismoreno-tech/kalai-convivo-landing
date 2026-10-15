@@ -350,7 +350,7 @@
       </div>
       <div class="receipt-total">
         <span class="tlabel">Diego le debe a Marta</span>
-        <span class="tval">84,20 €</span>
+        <span class="tval" data-count="84.2" data-decimals="2" data-suffix=" €">84,20 €</span>
       </div>
     </div>
   </div>
@@ -396,15 +396,15 @@
     <div class="score-panel">
       <div class="score-side">
         <span class="score-name">Marta</span>
-        <span class="score-pct tu">62%</span>
+        <span class="score-pct tu" data-count="62" data-suffix="%">62%</span>
       </div>
       <span class="score-vs">/</span>
       <div class="score-side">
         <span class="score-name">Diego</span>
-        <span class="score-pct neysa">38%</span>
+        <span class="score-pct neysa" data-count="38" data-suffix="%">38%</span>
       </div>
     </div>
-    <p class="score-debt">Diego le debe a Marta <strong>84,20 €</strong> — actualizado con cada ticket.</p>
+    <p class="score-debt">Diego le debe a Marta <strong data-count="84.2" data-decimals="2" data-suffix=" €">84,20 €</strong> — actualizado con cada ticket.</p>
   </div>
 </section>
 
@@ -418,7 +418,7 @@
     <div class="fair-compare reveal reveal-2">
       <div class="fair-row is-bad">
         <div class="fair-icon">½</div>
-        <div class="fair-text"><strong>El 50/50 de siempre</strong><span>Da igual quién gane más — pagáis lo mismo.</span></div>
+        <div class="fair-text"><strong>El 50/50 de siempre</strong><span>Da igual quién gane más: los dos pagan lo mismo.</span></div>
       </div>
       <div class="fair-row is-good">
         <div class="fair-icon">
@@ -487,7 +487,7 @@
 <section class="features">
   <div class="inner">
     <div class="section-head reveal">
-      <span class="eyebrow" style="color:var(--ink-muted)">Todo lo que hace por vosotros</span>
+      <span class="eyebrow" style="color:var(--ink-muted)">Todo lo que hace por ti</span>
       <h2 class="on-paper">Menos cuentas, más casa</h2>
     </div>
     <div class="feat-grid">
@@ -509,17 +509,17 @@
       <div class="feat reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
         <h3>Objetivos compartidos</h3>
-        <p>Un viaje, la entrada de un piso, un coche: marcad la meta y ved cuánto aporta cada uno.</p>
+        <p>Un viaje, la entrada de un piso, un coche: marca la meta y ve cuánto aporta cada uno.</p>
       </div>
       <div class="feat reveal reveal-2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-        <h3>Vuestra propia copia</h3>
-        <p>Vuestros datos, en una base de datos solo vuestra. Sin publicidad ni rastreo.</p>
+        <h3>Tu propia copia</h3>
+        <p>Tus datos, en una base de datos solo para tu casa. Sin publicidad ni rastreo.</p>
       </div>
       <div class="feat reveal reveal-3">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v10H3z"/><path d="M3 9l2-4h14l2 4"/><path d="M12 13v2"/></svg>
         <h3>Pago único</h3>
-        <p>24 € una vez y es vuestra. Sin mensualidades ni sorpresas.</p>
+        <p>24 € una vez y es tuya. Sin mensualidades ni sorpresas.</p>
       </div>
     </div>
   </div>
@@ -567,7 +567,7 @@
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Es privada?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <p class="faq-a">Sí. Cada casa tiene su propia base de datos, separada de la de cualquier otra, y solo entráis con vuestro usuario y contraseña. Para leer los tickets, la app envía la foto a la IA de Google (Gemini), que devuelve el importe, la fecha y la tienda.</p>
+        <p class="faq-a">Sí. Cada casa tiene su propia base de datos, separada de la de cualquier otra, y solo se entra con tu usuario y contraseña. Para leer los tickets, la app envía la foto a la IA de Google (Gemini), que devuelve el importe, la fecha y la tienda.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">¿Incluye soporte si tengo algún problema?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
@@ -583,8 +583,8 @@
 
 <section class="final-cta grain">
   <div class="narrow reveal">
-    <h2>Dejad de discutir<br>por quién paga qué.</h2>
-    <p class="lede">Subid el primer ticket hoy mismo y ved el reparto justo en segundos.</p>
+    <h2>Deja de discutir<br>por quién paga qué.</h2>
+    <p class="lede">Sube el primer ticket hoy mismo y ve el reparto justo en segundos.</p>
     <div class="cta-row">
       <a class="btn btn-accent" href="#precio">Consíguela por 24 € →</a>
       <a class="btn btn-ghost" href="#demo">Pruébala gratis</a>
@@ -632,6 +632,23 @@
     }, { threshold: 0.2 });
     own.forEach(function (el) { o.observe(el); });
   })();
+</script>
+<script type="module">
+  // Números que suben desde cero al aparecer en pantalla (Motion). Sin
+  // JavaScript, si el CDN falla o con "reducir movimiento" activado, se ven
+  // directamente los valores finales, que ya están en el HTML.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    import('https://cdn.jsdelivr.net/npm/motion@13.4.6/+esm').then(({ animate, inView }) => {
+      const fmt = (v, d) => v.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d });
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const to = parseFloat(el.dataset.count), d = Number(el.dataset.decimals || 0), suf = el.dataset.suffix || '';
+        el.textContent = fmt(0, d) + suf;
+        inView(el, () => {
+          animate(0, to, { duration: 1.6, ease: [0.22, 1, 0.36, 1], onUpdate: (v) => { el.textContent = fmt(v, d) + suf; } });
+        }, { amount: 0.6 });
+      });
+    }).catch(() => {});
+  }
 </script>
 </body>
 </html>
